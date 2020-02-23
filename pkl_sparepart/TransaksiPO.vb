@@ -119,9 +119,10 @@ Public Class TransaksiPO
         Try
             Dim sql As String
             'For baris = 0 To DataGridView1.Rows.Count - 2
+
             For baris = 0 To BarisDGV1 - 1
-                sql = "Insert Into T_PO values ('" & TxtKode.Text & "','" & DataGridView1.Rows(baris).Cells(0).Value & "','" & DataGridView1.Rows(baris).Cells(9).Value & "'
-            ,'" & KodeS & "','" & NPWP & "','" & EmailKontak & "',
+                sql = "Insert Into T_PO values ('" & DataGridView1.Rows(baris).Cells(9).Value & "','" & DataGridView1.Rows(baris).Cells(0).Value & "','" & TxtKode.Text & "',            
+            '" & KodeS & "','" & NPWP & "','" & EmailKontak & "',
             '" & DescAP & "','" & DateTimePicker1.Value & "','" & ComboEntity.Text & "'
             ,'" & ComboPOType.Text & "','" & TxtUp.Text & "','" & ComboTerm.Text & "'
             ,'" & ComboCurrency.Text & "','" & TaxScheme & "','" & PPN & "','" & DataGridView1.Rows(baris).Cells(7).Value & "'

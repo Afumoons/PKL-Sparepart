@@ -40,7 +40,7 @@ Public Class PengambilanBarang
             If dr.HasRows Then
                 While dr.Read()
                     LVPilih.Items.Add(dr.Item(2))
-                    LVPilih.Items(LVPilih.Items.Count - 1).SubItems.Add(dr.Item(1))
+                    LVPilih.Items(LVPilih.Items.Count - 1).SubItems.Add(dr.Item(0))
                 End While
             End If
             dr.Close()
@@ -185,7 +185,7 @@ Public Class PengambilanBarang
                 dr = cmd.ExecuteReader()
                 dr.Read()
                 TxtKode.Text = LVPilih.SelectedItems(0).SubItems(0).Text
-                TextBox4.Text = dr.Item(1)
+                TextBox4.Text = dr.Item(0)
                 CheckBox1.Text = "Active"
                 If CheckBox1.Checked = True Then
                     cb = "Active"
@@ -276,7 +276,7 @@ Public Class PengambilanBarang
                     MessageBox.Show("Data Terupdate", "Informasi Proses", MessageBoxButtons.OK, MessageBoxIcon.Information)
                 End If
                 cb = "Active"
-                cmd = New OracleCommand("insert into pengambilan values('" & TxtCodePickUp.Text & "','" & LVBaru.Items(index).SubItems(0).Text & "','" & LVBaru.Items(index).SubItems(1).Text & "','" & DateTimePicker1.Value & "','" & cb & "','" & TextBox1.Text & "')", conn)
+                cmd = New OracleCommand("insert into pengambilan values('" & LVBaru.Items(index).SubItems(0).Text & "','" & TxtCodePickUp.Text & "','" & LVBaru.Items(index).SubItems(1).Text & "','" & DateTimePicker1.Value & "','" & cb & "','" & TextBox1.Text & "')", conn)
                 cmd.ExecuteNonQuery()
                 cmd.Dispose()
                 'update sparepart set status_sparepart ='Terpakai',remark_sparepart='blabla' where kode_sparepart=(SELECT kode_sparepart FROM SPAREPART WHERE ROWNUM = 1 AND (STATUS_SPAREPART = 'Tidak Terpakai' or STATUS_SPAREPART='Active') and kode_kategori = '" & LVPilih.SelectedItems(0).SubItems(0).Text & "'")
@@ -290,7 +290,7 @@ Public Class PengambilanBarang
                 MessageBox.Show(ex.Message, "Informasi Error")
             End Try
             Try
-                cmd = New OracleCommand("insert into TBBaru values('" & TxtCodePickUp.Text & "','" & LVBaru.Items(index).SubItems(0).Text & "','" & LVBaru.Items(index).SubItems(0).Text & "','" & LVBaru.Items(index).SubItems(1).Text & "','" & LVBaru.Items(index).SubItems(2).Text & "')", conn)
+                cmd = New OracleCommand("insert into TBBaru values('" & LVBaru.Items(index).SubItems(0).Text & "','" & TxtCodePickUp.Text & "','" & LVBaru.Items(index).SubItems(0).Text & "','" & LVBaru.Items(index).SubItems(1).Text & "','" & LVBaru.Items(index).SubItems(2).Text & "')", conn)
                 cmd.ExecuteNonQuery()
                 cmd.Dispose()
             Catch ex As Exception
@@ -307,7 +307,7 @@ Public Class PengambilanBarang
             Catch ex As Exception
             End Try
             Try
-                cmd = New OracleCommand("insert into TBLama values('" & TxtCodePickUp.Text & "','" & LVBaru.Items(index).SubItems(0).Text & "','" & LVLama.Items(index).SubItems(0).Text & "','" & LVLama.Items(index).SubItems(1).Text & "','" & LVLama.Items(index).SubItems(2).Text & "')", conn)
+                cmd = New OracleCommand("insert into TBLama values('" & LVBaru.Items(index).SubItems(0).Text & "','" & TxtCodePickUp.Text & "','" & LVLama.Items(index).SubItems(0).Text & "','" & LVLama.Items(index).SubItems(1).Text & "','" & LVLama.Items(index).SubItems(2).Text & "')", conn)
                 cmd.ExecuteNonQuery()
                 cmd.Dispose()
             Catch ex As Exception

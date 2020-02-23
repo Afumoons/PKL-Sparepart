@@ -58,12 +58,13 @@ Public Class login
                 End If
 
 
-            ElseIf user = "admin" Or "Admin" Then 'admin
+            ElseIf user = "admin" Or user = "Admin" Then 'admin
                 cmd = New OracleCommand("select * from user_aplikasi where username like '_dmin'", conn)
                 dr = cmd.ExecuteReader
+                MsgBox("masuk")
                 If dr.HasRows Then
                     dr.Read()
-                    ' MsgBox(dr.Item(1))
+                    MsgBox(dr.Item(1))
                     If PasswordTextBox.Text = dr.Item(1) Then
                         ' MessageBox.Show("Email")
                         index.Panel3.Show()
@@ -80,8 +81,6 @@ Public Class login
                     dr.Close()
                     cmd.Dispose()
                 End If
-
-
             Else ' Purchasing
 
                 cmd = New OracleCommand("select * from user_aplikasi where username like 'pur'", conn)
@@ -101,17 +100,23 @@ Public Class login
                     Else
                         MessageBox.Show("Mohon masukkan Password yang benar", "Password tidak valid", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     End If
+                    dr.Close()
+                    cmd.Dispose()
                 End If
             End If
 
-            dr.Close()
-            cmd.Dispose()
         Catch ex As Exception
-            MsgBox("error")
+            MessageBox.Show(ex.Message, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+
         End Try
     End Sub
 
     Private Sub login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         koneksi()
+        MsgBox("terkoneksi")
+    End Sub
+
+    Private Sub Cancel_Click(sender As Object, e As EventArgs) Handles Cancel.Click
+        Me.Close()
     End Sub
 End Class

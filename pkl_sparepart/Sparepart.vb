@@ -91,7 +91,7 @@ Public Class Sparepart
                 PengambilanBarang.LVBaru.Items(PengambilanBarang.LVBaru.Items.Count - 1).SubItems.Add(kodeparam)
                 PengambilanBarang.LVBaru.Items(PengambilanBarang.LVBaru.Items.Count - 1).SubItems.Add(TxtNama.Text)
             ElseIf status = "baru" Then
-                'MsgBox("Baru")
+                MsgBox("Baru")
                 CountSparepartWhere()
                 Dim sqlkiriman As String = "insert into SPAREPART values('" & kdSP & "','" & TxtKode.Text & "','" & cb & "','" & radio & "','" & TxtCatatan.Text & "')"
                 'cmd = New OracleCommand(sqlkiriman, conn)
@@ -101,7 +101,6 @@ Public Class Sparepart
                 PengambilanBarang.LVLama.Items(PengambilanBarang.LVLama.Items.Count - 1).SubItems.Add(TxtKode.Text)
                 PengambilanBarang.LVLama.Items(PengambilanBarang.LVLama.Items.Count - 1).SubItems.Add(TxtNama.Text)
                 PengambilanBarang.LVLama.Items(PengambilanBarang.LVLama.Items.Count - 1).SubItems.Add(sqlkiriman)
-                'PengambilanBarang.TxtKode.Text = TxtKode.Text 'gausah soalnya habis ini diilangin lagi
                 'PengambilanBarang.ListView2.Items.Add(TxtKode.Text)
                 'PengambilanBarang.ListView2.Items(PengambilanBarang.ListView2.Items.Count - 1).SubItems.Add(TxtNama.Text)
                 PengambilanBarang.statusP = "baru"
@@ -141,7 +140,7 @@ Public Class Sparepart
             '        'Index.Panel6.Hide()
             '        'Produk.refreshtbl()
         Catch ex As Exception
-            'MessageBox.Show(ex.Message, "Maaf, tidak dapat menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Warning)
+            MessageBox.Show(ex.Message, "Maaf, tidak dapat menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Warning)
         End Try
     End Sub
     Sub CountSparepartWhere()

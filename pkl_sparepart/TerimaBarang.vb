@@ -35,7 +35,8 @@ Public Class TerimaBarang
                     End If
                     'MsgBox(TextBox3.Text)
                     'MsgBox(txtKD_PR.Text)
-                    cmd = New OracleCommand("insert into Penerimaan values ('" & txtkode.Text & "','" & TxtKodePO.Text & "','" & TxtKodeSupplier.Text & "','" & DataGridView1.Rows(index).Cells(6).Value & "','" & txtKD_PR.Text & "','" & DateTimePicker1.Value & "', '" & TxtDNVendor.Text & "', '" & TxtNoPol.Text & "','" & DataGridView1.Rows(index).Cells(0).Value & "','" & DataGridView1.Rows(index).Cells(2).Value & "','" & DataGridView1.Rows(index).Cells(4).Value & "','" & DataGridView1.Rows(index).Cells(5).Value & "')", conn)
+
+                    cmd = New OracleCommand("insert into Penerimaan values ('" & DataGridView1.Rows(index).Cells(6).Value & "','" & txtKD_PR.Text & "','" & TxtKodePO.Text & "','" & TxtKodeSupplier.Text & "','" & txtkode.Text & "','" & DateTimePicker1.Value & "','" & TxtDNVendor.Text & "','" & TxtNoPol.Text & "','" & DataGridView1.Rows(index).Cells(0).Value & "','" & DataGridView1.Rows(index).Cells(2).Value & "','" & DataGridView1.Rows(index).Cells(4).Value & "','" & DataGridView1.Rows(index).Cells(5).Value & "')", conn)
                     cmd.ExecuteNonQuery()
                     cmd.Dispose()
                     'MsgBox("skxw")

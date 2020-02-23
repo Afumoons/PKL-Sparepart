@@ -69,7 +69,7 @@ Public Class TransaksiPR
         Try
             Dim sql As String
             For baris = 0 To DataGridView1.Rows.Count - 2
-                sql = "Insert Into T_pr values ('" & TxtKode.Text & "','" & DataGridView1.Rows(baris).Cells(0).Value & "','" & DateTimePicker1.Value & "','" & ComboReqShipment.Text & "','" & ComboPRType.Text & "','" & ComboSubPR.Text & "','" & ComboReqBy.Text & "','" & DataGridView1.Rows(baris).Cells(2).Value & "','" & DataGridView1.Rows(baris).Cells(4).Value & "','" & DataGridView1.Rows(baris).Cells(6).Value & "','" & TxtCatatan.Text & "','Belum Diproses')"
+                sql = "Insert Into T_pr values ('" & DataGridView1.Rows(baris).Cells(0).Value & "','" & TxtKode.Text & "','" & DateTimePicker1.Value & "','" & ComboReqShipment.Text & "','" & ComboPRType.Text & "','" & ComboSubPR.Text & "','" & ComboReqBy.Text & "','" & DataGridView1.Rows(baris).Cells(2).Value & "','" & DataGridView1.Rows(baris).Cells(4).Value & "','" & DataGridView1.Rows(baris).Cells(6).Value & "','" & TxtCatatan.Text & "','Belum Diproses')"
                 Dim cmd As New OracleCommand(sql, conn)
                 cmd.ExecuteNonQuery()
                 cmd.Dispose()
