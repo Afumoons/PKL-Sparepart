@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.pkl_sparepart.index
+            Me.MainForm = Global.pkl_sparepart.login
         End Sub
     End Class
 End Namespace

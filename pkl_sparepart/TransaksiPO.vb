@@ -13,7 +13,9 @@ Public Class TransaksiPO
         isikode()
         Status = "Kode"
         Try
+#Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select distinct nama_supplier from supplier ", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
             dr = cmd.ExecuteReader()
             While dr.Read
                 ComboSupplier.Items.Add(dr.Item(0))
@@ -46,7 +48,9 @@ Public Class TransaksiPO
             Dim bant As String = ""
             'select count(kode_transaksiPR)+1 from t_pr where kode_transaksiPR like '%1907%'
             'cmd = New OracleCommand("select count(kode_transaksiPO)+1 from t_po where kode_transaksiPo like '%" & gabungan & "%'", conn)
+#Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select max(to_number(substr(KODE_TRANSAKSIPO,12,5 )))+1 from t_po where kode_transaksiPO like '%" & gabungan & "%'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
             dr = cmd.ExecuteReader()
             If dr.HasRows Then
                 dr.Read()
@@ -127,11 +131,15 @@ Public Class TransaksiPO
             ,'" & ComboPOType.Text & "','" & TxtUp.Text & "','" & ComboTerm.Text & "'
             ,'" & ComboCurrency.Text & "','" & TaxScheme & "','" & PPN & "','" & DataGridView1.Rows(baris).Cells(7).Value & "'
             ,'" & TotalSeluruh & "','" & DiscountAngka & "','" & ComboShipping.Text & "','" & TxtCatatan.Text & "','Belum Diterima')"
+#Disable Warning BC40000 ' Type or member is obsolete
                 Dim cmd As New OracleCommand(sql, conn)
+#Enable Warning BC40000 ' Type or member is obsolete
                 cmd.ExecuteNonQuery()
                 cmd.Dispose()
             Next
+#Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("update T_pr set status_PR = 'Proses' where kode_transaksipr = '" & DataGridView1.Rows(0).Cells(0).Value & "'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
             cmd.ExecuteNonQuery()
             cmd.Dispose()
             MessageBox.Show("Berhasil menyimpan data!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -168,7 +176,9 @@ Public Class TransaksiPO
             Try
                 BarisDGV1 = 0
                 BarisDGV2 = 0
+#Disable Warning BC40000 ' Type or member is obsolete
                 cmd = New OracleCommand("select t.kode_transaksiPR, k.nama_kategori, t.qty1, k.uom, t.qty2, k.uom_packaging, t.date_pr, t.kode_kategori from t_pr t join kategori_sparepart k on (t.kode_kategori = k.kode_kategori) where kode_transaksiPR = '" & DataGridView1.Rows(BarisDGV1).Cells(0).Value & "'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
                 dr = cmd.ExecuteReader()
                 If DataGridView1.AllowUserToAddRows = True Then
                     While dr.Read()
@@ -231,7 +241,9 @@ Public Class TransaksiPO
     End Sub
 
     Public Sub addItems(ByVal col As AutoCompleteStringCollection)
+#Disable Warning BC40000 ' Type or member is obsolete
         cmd = New OracleCommand("select distinct kode_transaksipr from t_pr where status_pr = 'Belum Diproses'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
         dr = cmd.ExecuteReader()
         While dr.Read()
             col.Add(dr.Item(0))
@@ -242,7 +254,9 @@ Public Class TransaksiPO
 
     Private Sub ComboSupplier_TextChanged(sender As Object, e As EventArgs) Handles ComboSupplier.TextChanged
         Try
+#Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select kode_supplier,contact_person,default_currency,npwp,email_kontak,desc_ap from supplier where nama_supplier = '" & ComboSupplier.Text & "'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
             dr = cmd.ExecuteReader()
             If dr.HasRows Then
                 dr.Read()

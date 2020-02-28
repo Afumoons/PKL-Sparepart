@@ -15,7 +15,9 @@ Public Class TransaksiPR
         Try
             Dim bant As String = ""
             'select count(kode_transaksiPR)+1 from t_pr where kode_transaksiPR like '%1907%'
+#Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select max(to_number(substr(KODE_TRANSAKSIPR,11,20)))+1 from t_pr where date_pr like '%" & cari & "%'", conn) 'INI
+#Enable Warning BC40000 ' Type or member is obsolete
             'MsgBox(cari)
             'cmd = New OracleCommand("select max(to_number(substr(KODE_TRANSAKSIPR,11,20)))+1 from t_pr", conn)
             dr = cmd.ExecuteReader()
@@ -70,7 +72,9 @@ Public Class TransaksiPR
             Dim sql As String
             For baris = 0 To DataGridView1.Rows.Count - 2
                 sql = "Insert Into T_pr values ('" & DataGridView1.Rows(baris).Cells(0).Value & "','" & TxtKode.Text & "','" & DateTimePicker1.Value & "','" & ComboReqShipment.Text & "','" & ComboPRType.Text & "','" & ComboSubPR.Text & "','" & ComboReqBy.Text & "','" & DataGridView1.Rows(baris).Cells(2).Value & "','" & DataGridView1.Rows(baris).Cells(4).Value & "','" & DataGridView1.Rows(baris).Cells(6).Value & "','" & TxtCatatan.Text & "','Belum Diproses')"
+#Disable Warning BC40000 ' Type or member is obsolete
                 Dim cmd As New OracleCommand(sql, conn)
+#Enable Warning BC40000 ' Type or member is obsolete
                 cmd.ExecuteNonQuery()
                 cmd.Dispose()
             Next
@@ -116,7 +120,9 @@ Public Class TransaksiPR
     End Sub
 
     Public Sub addItems(ByVal col As AutoCompleteStringCollection)
+#Disable Warning BC40000 ' Type or member is obsolete
         cmd = New OracleCommand("select * from Kategori_SPAREPART", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
         dr = cmd.ExecuteReader()
         While dr.Read()
             col.Add(dr.Item(0))
@@ -128,7 +134,9 @@ Public Class TransaksiPR
     Dim bantu As Integer
     Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
         If e.KeyCode = Keys.Tab Then
+#Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select * from kategori_sparepart where kode_kategori = '" & DataGridView1.Rows(barisdgv).Cells(0).Value & "' or nama_kategori = '" & DataGridView1.Rows(barisdgv).Cells(0).Value & "'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
             dr = cmd.ExecuteReader()
             dr.Read()
             Try
@@ -155,7 +163,9 @@ Public Class TransaksiPR
     End Sub
     Private Sub DataGridView1_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
         If keterangan = "bacot" Then
+#Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select * from kategori_sparepart where kode_kategori = '" & DataGridView1.Rows(barisdgv).Cells(0).Value & "' or nama_kategori = '" & DataGridView1.Rows(barisdgv).Cells(0).Value & "'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
             dr = cmd.ExecuteReader()
             dr.Read()
             Try

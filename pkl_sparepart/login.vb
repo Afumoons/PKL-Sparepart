@@ -5,10 +5,11 @@ Public Class login
     Private Sub OK_Click(sender As Object, e As EventArgs) Handles OK.Click
 
         Try
-
             user = UsernameTextBox.Text
             If user = "operator" Then  'operator
+#Disable Warning BC40000 ' Type or member is obsolete
                 cmd = New OracleCommand("select * from user_aplikasi where username like 'op'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
                 dr = cmd.ExecuteReader
                 'MsgBox("masuk")
                 If dr.HasRows Then 'Operator
@@ -35,7 +36,9 @@ Public Class login
 
             ElseIf user = "GA" Then   'GA
 
+#Disable Warning BC40000 ' Type or member is obsolete
                 cmd = New OracleCommand("select * from user_aplikasi where username like 'G'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
                 dr = cmd.ExecuteReader
                 If dr.HasRows Then
                     dr.Read()
@@ -59,9 +62,11 @@ Public Class login
 
 
             ElseIf user = "admin" Or user = "Admin" Then 'admin
+#Disable Warning BC40000 ' Type or member is obsolete
                 cmd = New OracleCommand("select * from user_aplikasi where username like '_dmin'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
                 dr = cmd.ExecuteReader
-                MsgBox("masuk")
+                MsgBox("Selamat datang Admin")
                 If dr.HasRows Then
                     dr.Read()
                     MsgBox(dr.Item(1))
@@ -83,7 +88,9 @@ Public Class login
                 End If
             Else ' Purchasing
 
+#Disable Warning BC40000 ' Type or member is obsolete
                 cmd = New OracleCommand("select * from user_aplikasi where username like 'pur'", conn)
+#Enable Warning BC40000 ' Type or member is obsolete
                 dr = cmd.ExecuteReader
                 If dr.HasRows Then
                     dr.Read()
