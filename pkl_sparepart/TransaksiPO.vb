@@ -46,8 +46,6 @@ Public Class TransaksiPO
         TxtKode.Text = ""
         Try
             Dim bant As String = ""
-            'select count(kode_transaksiPR)+1 from t_pr where kode_transaksiPR like '%1907%'
-            'cmd = New OracleCommand("select count(kode_transaksiPO)+1 from t_po where kode_transaksiPo like '%" & gabungan & "%'", conn)
 #Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select max(to_number(substr(KODE_TRANSAKSIPO,12,5 )))+1 from t_po where kode_transaksiPO like '%" & gabungan & "%'", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
@@ -73,7 +71,6 @@ Public Class TransaksiPO
             DiscountAngka = SubTotal * CLng(DiscountPersen) / 100
             TxtDiscountA.Text = DiscountAngka
         Catch ex As Exception
-            'MessageBox.Show("Barang belum terisi", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
     End Sub
 
@@ -122,8 +119,6 @@ Public Class TransaksiPO
     Private Sub BtnSimpan_Click(sender As Object, e As EventArgs) Handles BtnSimpan.Click
         Try
             Dim sql As String
-            'For baris = 0 To DataGridView1.Rows.Count - 2
-
             For baris = 0 To BarisDGV1 - 1
                 sql = "Insert Into T_PO values ('" & DataGridView1.Rows(baris).Cells(9).Value & "','" & DataGridView1.Rows(baris).Cells(0).Value & "','" & TxtKode.Text & "',            
             '" & KodeS & "','" & NPWP & "','" & EmailKontak & "',
@@ -149,9 +144,7 @@ Public Class TransaksiPO
             PORV.TxtDPP.Text = TxtDPP.Text
             PORV.TxtPPN.Text = TxtPPN.Text
             PORV.TxtCur.Text = ComboCurrency.Text
-            'Me.Hide()
             PORV.ShowDialog()
-            'Me.Show()
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Maaf, tidak dapat menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
@@ -203,30 +196,22 @@ Public Class TransaksiPO
             End Try
         ElseIf Status = "Hitung" Then
             Try
-                'For BarisDGV2 = 0 To DataGridView1.Rows.Count - 2
                 For BarisDGV2 = 0 To BarisDGV1 - 1
                     DataGridView1.Rows(BarisDGV2).Cells(7).Value = DataGridView1.Rows(BarisDGV2).Cells(4).Value * DataGridView1.Rows(BarisDGV2).Cells(6).Value
                 Next
                 hitungsub()
-                'If BarisDGV2 <> BarisDGV1 Then
-                '    'bantu = CInt(DataGridView1.Rows(BarisDGV).Cells(2).Value) * CInt(hidden.Text)
-                '    BarisDGV2 += 1
-                'End If
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End Try
         End If
     End Sub
+
     Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
         If e.KeyCode = Keys.Tab Then
             dgvautofill()
         End If
     End Sub
-    'Private Sub DataGridView1_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
-    '    If Keterangan = "bacot" Then
-    '        dgvautofill()
-    '    End If
-    'End Sub
+
     Private Sub DataGridView1_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles DataGridView1.EditingControlShowing
         Keterangan = "bacot"
         Dim autoText As TextBox = TryCast(e.Control, TextBox)
@@ -272,8 +257,9 @@ Public Class TransaksiPO
         Catch ex As Exception
         End Try
     End Sub
+
     Private Sub ComboVAT_TextChanged(sender As Object, e As EventArgs) Handles ComboVAT.TextChanged
         hitung()
     End Sub
 End Class
-'-241750337
+

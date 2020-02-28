@@ -1,22 +1,22 @@
 ﻿Imports System.Data.OracleClient
 Public Class TerimaBarang
-    Public kuantiti1, kuantiti2, kuantiti3, kuantiti4, kuantiti5, kuantiti6, kuantiti7, kuantiti8, kuantiti9, kuantiti10 As Integer
+    Public kuantiti1, kuantiti2, kuantiti3, kuantiti4, kuantiti5, kuantiti6, kuantiti7, kuantiti8, kuantiti9, kuantiti10, anu1, anuu As Integer
     Public produk1, produk2, produk3, produk4, produk5, produk6, produk7, produk8, produk9, produk10 As String
+    Public produk, satuanproduk As String()
+    Dim kdSP, status, grade, kodepr As String
+
     Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles BtnBack.Click
         Me.Close()
     End Sub
+
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         TerimaRV.Show()
     End Sub
+
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
         Me.TerimaBarang_Load(sender, e)
     End Sub
-    Private Sub BtnAdd_Click(sender As Object, e As EventArgs)
-    End Sub
-    Public produk, satuanproduk As String()
-    Dim kdSP As String
-    Dim status As String
-    Dim grade As String
+
     Private Sub BtnSimpan_Click(sender As Object, e As EventArgs) Handles BtnSimpan.Click
         Try
             For index = 0 To DataGridView1.Rows.Count - 2 'dua kali
@@ -52,14 +52,10 @@ Public Class TerimaBarang
                         dr.Close()
                         cmd.Dispose()
                         kdSP = DataGridView1.Rows(index).Cells(6).Value & bantT & kdSP
-                        'MsgBox(kdSP)
                     Catch ex As Exception
-                        'ERRORR DISINI
-                        'kdSP = "001"
                     End Try
                     status = "Tidak Terpakai"
                     grade = "Good"
-                    'MsgBox(DataGridView1.Rows(index).Cells(6).Value)
                     Try
                         Dim sql As String = "insert into SPAREPART values('" & kdSP & "','" & DataGridView1.Rows(index).Cells(6).Value & "','" & status & "','" & grade & "','" & TxtCatatan.Text & "')"
 #Disable Warning BC40000 ' Type or member is obsolete
@@ -79,13 +75,8 @@ Public Class TerimaBarang
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Informasi")
         End Try
-        ''For index = 1 To CInt(DataGridView1.Rows(baris).Cells(2).Value)
-
-        'Next
     End Sub
-    Dim kodepr As String
-    Dim anu1 As Integer
-    Dim anuu As Integer
+
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
 #Disable Warning BC40000 ' Type or member is obsolete
         cmd = New OracleCommand("select distinct s.QTY_PERPACK,r.qty1,r.kode_transaksipr from KATEGORI_sparepart s join t_pr r on (s.kode_kategori = r.kode_kategori) join t_po o on(r.kode_transaksipr=o.kode_transaksipr) where  o.kode_transaksiPO = '" & TxtKodePO.Text & "'", conn)
@@ -93,7 +84,6 @@ Public Class TerimaBarang
         dr = cmd.ExecuteReader()
         Dim baris As Integer = 0
         While dr.Read()
-            'MsgBox(dr.Item(5))
             kuantiti(baris) = CInt(DataGridView1.Rows(baris).Cells(0).Value)
             If kuantiti(baris) <> CInt(dr.Item(1)) Then
                 DataGridView1.Rows(baris).Cells(4).Value = dr.Item(1) - kuantiti(baris)
@@ -115,7 +105,6 @@ Public Class TerimaBarang
     End Sub
     Public kuantiti As Integer()
     Private Sub TerimaBarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'DataSetTPO.T_PO' table. You can move, or remove it, as needed.
         kuantiti = New Integer() {kuantiti1, kuantiti2, kuantiti3, kuantiti4, kuantiti5, kuantiti6, kuantiti7, kuantiti8, kuantiti9, kuantiti10}
         produk = New String() {produk1, produk2, produk3, produk4, produk5, produk6, produk7, produk8, produk9, produk10}
         koneksi()
@@ -129,11 +118,9 @@ Public Class TerimaBarang
 #Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select count(*)+1 from penerimaan where kode_penerimaan like '%" & gabungan & "%'", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
-            'cmd = New OracleCommand("select max(to_number(substr(KODE_penerimaan,10,20)))+1 from penerimaan", conn)
             dr = cmd.ExecuteReader()
             If dr.HasRows Then
                 dr.Read()
-                'kode = dr.Item(0)
                 txtkode.Text = dr.Item(0)
                 For i As Integer = 1 To 6 - txtkode.TextLength
                     bant += "0"
@@ -155,13 +142,12 @@ Public Class TerimaBarang
         Try
             If dr.HasRows Then
                 While dr.Read()
-                    'MsgBox(dr.Item(0))
                     ListView1.Items.Add(dr.Item(0))
                 End While
             Else
-                '   MsgBox(dr.Item(0))
             End If
         Catch ex As Exception
+
         End Try
         dr.Close()
         cmd.Dispose()
@@ -180,7 +166,6 @@ Public Class TerimaBarang
         txtKD_PR.Text = dr.Item(0)
         TxtNamaSupp.Text = dr.Item(1)
         TxtAlamatSupp.Text = dr.Item(2)
-        'MsgBox(dr.Item(2))
         TxtKodeSupplier.Text = dr.Item(3)
         dr.Close()
         cmd.Dispose()
@@ -203,55 +188,6 @@ Public Class TerimaBarang
         End While
         dr.Close()
         cmd.Dispose()
-
-        'cmd = New OracleCommand("select distinct s.UOM,s.UOM_PACKAGING from sparepart s join t_po o on (s.kode_kategori = o.kode_kategori) where  o.kode_transaksiPO = '" & TextBox2.Text & "'", conn)
-        'dr = cmd.ExecuteReader()
-        'Dim baris As Integer = 0
-        'DataGridView1.Rows.Clear()
-
-        'While dr.Read()
-
-
-        '    DataGridView1.Rows.Add()
-        '    'DataGridView1.Rows(baris).Cells(0).Value = dr.Item(0)
-        '    DataGridView1.Rows(baris).Cells(1).Value = dr.Item(0)
-        '    ' DataGridView1.Rows(baris).Cells(2).Value = dr.Item(1)
-        '    DataGridView1.Rows(baris).Cells(3).Value = dr.Item(1)
-        '    '  DataGridView1.Rows(baris).Cells(5).Value = dr.Item(4)
-        '    baris += 1
-
-        'End While
-        'dr.Close()
-        'cmd.Dispose()
-
-        'cmd = New OracleCommand("select distinct r.qty1,r.qty2 from t_pr r join t_po o on (r.kode_transaksipR = o.kode_transaksipr)where o.kode_transaksiPO = '" & TextBox2.Text & "'", conn)
-        'dr = cmd.ExecuteReader()
-        'Dim i As Integer = 0
-
-        'While dr.Read()
-
-        '    DataGridView1.Rows(i).Cells(0).Value = dr.Item(0)
-        '    DataGridView1.Rows(i).Cells(2).Value = dr.Item(1)
-        '    'DataGridView1.Rows(i).Cells(5).Value = dr.Item(2)
-        '    i += 1
-
-        'End While
-        'dr.Close()
-        'cmd.Dispose()
-        'cmd = New OracleCommand("select distinct s.nama_kategori from kategori_sparepart s join t_po o on (s.kode_kategori = o.kode_kategori)where o.kode_transaksiPO = '" & TextBox2.Text & "'", conn)
-        'dr = cmd.ExecuteReader()
-        'Dim u As Integer = 0
-
-        'While dr.Read()
-
-
-        '    DataGridView1.Rows(u).Cells(5).Value = dr.Item(0)
-        '    u += 1
-
-        'End While
-        'dr.Close()
-        'cmd.Dispose()
-
         TerimaBarang_Load(sender, e)
         Panel1.Hide()
     End Sub
@@ -293,29 +229,6 @@ Public Class TerimaBarang
 
     Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
         If e.KeyCode = Keys.Enter Then
-            'cmd = New OracleCommand("select s.UOM,s.UOM_PACKAGING,r.qty1,r.qty2,s.nama_kategori from KATEGORI_sparepart s join t_pr r on (s.kode_kategori = r.kode_kategori) join t_po o on(r.kode_transaksipr=o.kode_transaksipr) where  o.kode_transaksiPO = '" & TextBox2.Text & "'", conn)
-            'dr = cmd.ExecuteReader()
-            'Dim baris As Integer = 0
-            'While dr.Read()
-
-
-            '    kuantiti(baris) = CInt(DataGridView1.Rows(baris).Cells(0).Value)
-
-            '    If kuantiti(baris) <> CInt(dr.Item(2)) Then
-            '        DataGridView1.Rows(baris).Cells(4).Value = dr.Item(2) - kuantiti(baris)
-
-
-            '    End If
-
-
-            '    baris += 1
-
-            'End While
-
-
-
-            'dr.Close()
-            'cmd.Dispose()
 #Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select distinct s.QTY_PERPACK,r.qty1 from KATEGORI_sparepart s join t_pr r on (s.kode_kategori = r.kode_kategori) join t_po o on(r.kode_transaksipr=o.kode_transaksipr) where  o.kode_transaksiPO = '" & TxtKodePO.Text & "'", conn)
 #Enable Warning BC40000 ' Type or member is obsolete

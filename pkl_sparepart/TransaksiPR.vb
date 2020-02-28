@@ -2,9 +2,12 @@
 Public Class TransaksiPR
     Public barisdgv As Integer = 0
     Public keterangan As String
+    Dim bantu As Integer
+
     Private Sub BtnAdd_Click(sender As Object, e As EventArgs) Handles BtnAdd.Click
         DataGridView1.AllowUserToAddRows = True
     End Sub
+
     Sub isikode()
         Dim month As String = Format(DateTimePicker1.Value, "MM")
         Dim year As String = Format(DateTimePicker1.Value, "yy")
@@ -14,17 +17,12 @@ Public Class TransaksiPR
         TxtKode.Text = ""
         Try
             Dim bant As String = ""
-            'select count(kode_transaksiPR)+1 from t_pr where kode_transaksiPR like '%1907%'
 #Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("select max(to_number(substr(KODE_TRANSAKSIPR,11,20)))+1 from t_pr where date_pr like '%" & cari & "%'", conn) 'INI
 #Enable Warning BC40000 ' Type or member is obsolete
-            'MsgBox(cari)
-            'cmd = New OracleCommand("select max(to_number(substr(KODE_TRANSAKSIPR,11,20)))+1 from t_pr", conn)
             dr = cmd.ExecuteReader()
             If dr.HasRows Then
                 dr.Read()
-
-                'kode = dr.Item(0)
                 TxtKode.Text = dr.Item(0)
                 For i As Integer = 1 To 4 - TxtKode.TextLength
                     bant += "0"
@@ -38,35 +36,16 @@ Public Class TransaksiPR
         End Try
 
     End Sub
+
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
         isikode()
     End Sub
+
     Private Sub TransaksiPR_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         koneksi()
         isikode()
-        'cmd = New OracleCommand("select * from supplier where kode_supplier = '" & kodeparam & "'", conn)
-        'dr = cmd.ExecuteReader()
-        'If dr.HasRows = True Then
-        '    If dr.Read = True Then
-        '        TxtKode.Text = dr.Item(0)
-        '        TxtNama.Text = dr.Item(1)
-        '        TxtSatuan.Text = dr.Item(2)
-        '        TxtStok.Text = dr.Item(3)
-        '        TxtCatatan.Text = dr.Item(5)
-        '        Try 'ada picture
-        '            Dim img() As Byte
-        '            img = dr.Item(4)
-        '            Dim ms As New MemoryStream(img)
-        '            PictureBox1.BackgroundImage = Image.FromStream(ms)
-        '        Catch ex As Exception 'no picture
-        '            PictureBox1.BackgroundImage = pkl_sparepart.My.Resources.Resources.Product
-        '        End Try
-        '    End If
-        'End If
-        'dr.Close()
-        'cmd.Dispose()
-        'End If
     End Sub
+
     Private Sub BtnSimpan_Click(sender As Object, e As EventArgs) Handles BtnSimpan.Click
         Try
             Dim sql As String
@@ -87,15 +66,9 @@ Public Class TransaksiPR
             MessageBox.Show(ex.Message, "Maaf, tidak dapat menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
     End Sub
-    'Dim titleText As String = DataGridView1.Columns(0).HeaderText
+
     Private Sub DataGridView1_EditingControlShowing(sender As Object, e As DataGridViewEditingControlShowingEventArgs) Handles DataGridView1.EditingControlShowing
         keterangan = "bacot"
-        'formblabla.show
-        'If DataGridView1.s Then
-        '    MsgBox("bambank")
-        'End If
-        'MsgBox(DataGridView1.Columns(0).HeaderText)
-        'If titleText.Equals("Item Code") Then
         Dim autoText As TextBox = TryCast(e.Control, TextBox)
         If autoText IsNot Nothing Then
             autoText.AutoCompleteMode = AutoCompleteMode.Suggest
@@ -103,20 +76,7 @@ Public Class TransaksiPR
             Dim DataCollection As New AutoCompleteStringCollection()
             addItems(DataCollection)
             autoText.AutoCompleteCustomSource = DataCollection
-            'cmd = New OracleCommand("select * from SPAREPART where kode_sparepart = '" & DataGridView1.Rows(barisdgv).Cells(0).Value & "' or nama = '" & DataGridView1.Rows(barisdgv).Cells(0).Value & "'", conn)
-            'dr = cmd.ExecuteReader()
-            'dr.Read()
-            'MsgBox("mantul")
-            'If DataGridView1.Rows(barisdgv).Cells(0).Value IsNot Nothing Then
-            '    MsgBox("mantul")
-            '    DataGridView1.Rows(barisdgv).Cells(0).Value = dr.Item(0)
-            '    DataGridView1.Rows(barisdgv).Cells(1).Value = dr.Item(1)
-            '    DataGridView1.Rows(barisdgv).Cells(3).Value = dr.Item(2)
-            '    DataGridView1.Rows(barisdgv).Cells(5).Value = dr.Item(3)
-            '    barisdgv += 1
-            'End If
         End If
-        'End If
     End Sub
 
     Public Sub addItems(ByVal col As AutoCompleteStringCollection)
@@ -131,7 +91,7 @@ Public Class TransaksiPR
         dr.Close()
         cmd.Dispose()
     End Sub
-    Dim bantu As Integer
+
     Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
         If e.KeyCode = Keys.Tab Then
 #Disable Warning BC40000 ' Type or member is obsolete
@@ -161,6 +121,7 @@ Public Class TransaksiPR
         dr.Close()
         cmd.Dispose()
     End Sub
+
     Private Sub DataGridView1_CellMouseClick(sender As Object, e As DataGridViewCellMouseEventArgs) Handles DataGridView1.CellMouseClick
         If keterangan = "bacot" Then
 #Disable Warning BC40000 ' Type or member is obsolete
@@ -189,11 +150,9 @@ Public Class TransaksiPR
         End If
         dr.Close()
         cmd.Dispose()
-
     End Sub
 
     Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles BtnBack.Click
         Me.Close()
     End Sub
-
 End Class
