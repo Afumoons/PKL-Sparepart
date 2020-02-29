@@ -44,7 +44,7 @@ Public Class Supplier
             ElseIf CheckSStatus.Checked = False Then
                 x = "Non Aktif"
             End If
-            'Account Payment
+            'Perulangan sesuai jumlah Account Payment
             For baris = 0 To DGVAP.Rows.Count - 2
                 Try
                     sql = "Insert Into supplier values ('" & TxtKode.Text & "','" & TxtNama.Text & "','" & TxtSContact.Text & "','" & TxtSAddres.Text & "','" & ComboSCity.Text & "','" & TxtSZip.Text & "','" & TxtSTelp.Text & "','" & TxtSFax.Text & "','" & ComboSGroup.Text & "','" & ComboSPGroup.Text & "','" & ComboSCurrency.Text & "','" & ComboSAccount.Text & "','" & x & "','" & TxtCatatan.Text & "','" & TxtNPWP.Text & "','" & TxtNPWPNama.Text & "','" & TxtNPWPAddress.Text & "','" & ComboNPWPPPN.Text & "','" & DGVContact.Rows(baris).Cells(3).Value & "','" & DGVContact.Rows(baris).Cells(0).Value & "','" & DGVContact.Rows(baris).Cells(1).Value & "','" & DGVContact.Rows(baris).Cells(2).Value & "','" & DGVAP.Rows(0).Cells(0).Value & "','" & DGVAP.Rows(0).Cells(1).Value & "')"
@@ -57,7 +57,7 @@ Public Class Supplier
 
                 End Try
             Next
-            'Contact
+            'Perulangan sesuai jumlah Contact
             For baris = 1 To DGVContact.Rows.Count - 2
                 Try
                     sql = "Insert Into supplier values ('" & TxtKode.Text & "','" & TxtNama.Text & "','" & TxtSContact.Text & "','" & TxtSAddres.Text & "','" & ComboSCity.Text & "','" & TxtSZip.Text & "','" & TxtSTelp.Text & "','" & TxtSFax.Text & "','" & ComboSGroup.Text & "','" & ComboSPGroup.Text & "','" & ComboSCurrency.Text & "','" & ComboSAccount.Text & "','" & x & "','" & TxtCatatan.Text & "','" & TxtNPWP.Text & "','" & TxtNPWPNama.Text & "','" & TxtNPWPAddress.Text & "','" & ComboNPWPPPN.Text & "','" & DGVContact.Rows(0).Cells(3).Value & "','" & DGVContact.Rows(0).Cells(0).Value & "','" & DGVContact.Rows(baris).Cells(1).Value & "','" & DGVContact.Rows(0).Cells(2).Value & "','" & DGVAP.Rows(baris).Cells(0).Value & "','" & DGVAP.Rows(baris).Cells(1).Value & "')"

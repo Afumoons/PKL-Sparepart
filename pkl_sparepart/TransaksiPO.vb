@@ -142,6 +142,7 @@ Public Class TransaksiPO
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Maaf, tidak dapat menyimpan data", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
+        Me.Close()
     End Sub
 
     Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles BtnBack.Click

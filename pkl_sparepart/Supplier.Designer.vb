@@ -192,7 +192,7 @@ Partial Class Supplier
         Me.ComboSAccount.Location = New System.Drawing.Point(447, 172)
         Me.ComboSAccount.Margin = New System.Windows.Forms.Padding(2)
         Me.ComboSAccount.Name = "ComboSAccount"
-        Me.ComboSAccount.Size = New System.Drawing.Size(131, 21)
+        Me.ComboSAccount.Size = New System.Drawing.Size(308, 21)
         Me.ComboSAccount.TabIndex = 12
         '
         'CheckSStatus
@@ -235,7 +235,7 @@ Partial Class Supplier
         Me.ComboSCurrency.Location = New System.Drawing.Point(447, 150)
         Me.ComboSCurrency.Margin = New System.Windows.Forms.Padding(2)
         Me.ComboSCurrency.Name = "ComboSCurrency"
-        Me.ComboSCurrency.Size = New System.Drawing.Size(131, 21)
+        Me.ComboSCurrency.Size = New System.Drawing.Size(308, 21)
         Me.ComboSCurrency.TabIndex = 11
         '
         'Label9
@@ -323,7 +323,7 @@ Partial Class Supplier
         Me.TxtSZip.Location = New System.Drawing.Point(447, 128)
         Me.TxtSZip.Margin = New System.Windows.Forms.Padding(2)
         Me.TxtSZip.Name = "TxtSZip"
-        Me.TxtSZip.Size = New System.Drawing.Size(131, 20)
+        Me.TxtSZip.Size = New System.Drawing.Size(308, 20)
         Me.TxtSZip.TabIndex = 10
         '
         'Label5
@@ -386,7 +386,7 @@ Partial Class Supplier
         Me.TxtSAddres.Margin = New System.Windows.Forms.Padding(2)
         Me.TxtSAddres.Multiline = True
         Me.TxtSAddres.Name = "TxtSAddres"
-        Me.TxtSAddres.Size = New System.Drawing.Size(476, 76)
+        Me.TxtSAddres.Size = New System.Drawing.Size(620, 76)
         Me.TxtSAddres.TabIndex = 4
         '
         'TxtSContact

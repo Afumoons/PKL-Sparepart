@@ -41,7 +41,7 @@ Partial Class TerimaBarang
         Me.Label2 = New System.Windows.Forms.Label()
         Me.Label20 = New System.Windows.Forms.Label()
         Me.Panel1 = New System.Windows.Forms.Panel()
-        Me.ListView1 = New System.Windows.Forms.ListView()
+        Me.LVKodePO = New System.Windows.Forms.ListView()
         Me.ColumnHeader1 = CType(New System.Windows.Forms.ColumnHeader(), System.Windows.Forms.ColumnHeader)
         Me.txtKD_PR = New System.Windows.Forms.TextBox()
         Me.KD_NPWP = New System.Windows.Forms.TextBox()
@@ -55,12 +55,12 @@ Partial Class TerimaBarang
         Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.BtnPlus = New System.Windows.Forms.PictureBox()
         Me.BtnSimpan = New System.Windows.Forms.PictureBox()
         Me.BtnBack = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BtnPlus, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnSimpan, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnBack, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
@@ -232,25 +232,25 @@ Partial Class TerimaBarang
         '
         'Panel1
         '
-        Me.Panel1.Controls.Add(Me.ListView1)
+        Me.Panel1.Controls.Add(Me.LVKodePO)
         Me.Panel1.Location = New System.Drawing.Point(110, 84)
         Me.Panel1.Margin = New System.Windows.Forms.Padding(2)
         Me.Panel1.Name = "Panel1"
         Me.Panel1.Size = New System.Drawing.Size(193, 70)
         Me.Panel1.TabIndex = 262
         '
-        'ListView1
+        'LVKodePO
         '
-        Me.ListView1.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1})
-        Me.ListView1.Dock = System.Windows.Forms.DockStyle.Fill
-        Me.ListView1.HideSelection = False
-        Me.ListView1.Location = New System.Drawing.Point(0, 0)
-        Me.ListView1.Margin = New System.Windows.Forms.Padding(2)
-        Me.ListView1.Name = "ListView1"
-        Me.ListView1.Size = New System.Drawing.Size(193, 70)
-        Me.ListView1.TabIndex = 0
-        Me.ListView1.UseCompatibleStateImageBehavior = False
-        Me.ListView1.View = System.Windows.Forms.View.Details
+        Me.LVKodePO.Columns.AddRange(New System.Windows.Forms.ColumnHeader() {Me.ColumnHeader1})
+        Me.LVKodePO.Dock = System.Windows.Forms.DockStyle.Fill
+        Me.LVKodePO.HideSelection = False
+        Me.LVKodePO.Location = New System.Drawing.Point(0, 0)
+        Me.LVKodePO.Margin = New System.Windows.Forms.Padding(2)
+        Me.LVKodePO.Name = "LVKodePO"
+        Me.LVKodePO.Size = New System.Drawing.Size(193, 70)
+        Me.LVKodePO.TabIndex = 0
+        Me.LVKodePO.UseCompatibleStateImageBehavior = False
+        Me.LVKodePO.View = System.Windows.Forms.View.Details
         '
         'ColumnHeader1
         '
@@ -347,16 +347,16 @@ Partial Class TerimaBarang
         Me.Button1.UseVisualStyleBackColor = True
         Me.Button1.Visible = False
         '
-        'PictureBox1
+        'BtnPlus
         '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(778, 126)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(25, 28)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 265
-        Me.PictureBox1.TabStop = False
+        Me.BtnPlus.Image = CType(resources.GetObject("BtnPlus.Image"), System.Drawing.Image)
+        Me.BtnPlus.Location = New System.Drawing.Point(778, 126)
+        Me.BtnPlus.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnPlus.Name = "BtnPlus"
+        Me.BtnPlus.Size = New System.Drawing.Size(25, 28)
+        Me.BtnPlus.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BtnPlus.TabIndex = 265
+        Me.BtnPlus.TabStop = False
         '
         'BtnSimpan
         '
@@ -388,7 +388,7 @@ Partial Class TerimaBarang
         Me.ClientSize = New System.Drawing.Size(812, 445)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TxtKodeSupplier)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.BtnPlus)
         Me.Controls.Add(Me.KD_NPWP)
         Me.Controls.Add(Me.txtKD_PR)
         Me.Controls.Add(Me.Panel1)
@@ -417,7 +417,7 @@ Partial Class TerimaBarang
         Me.Name = "TerimaBarang"
         Me.Panel1.ResumeLayout(False)
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BtnPlus, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BtnSimpan, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BtnBack, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
@@ -445,11 +445,11 @@ Partial Class TerimaBarang
     Friend WithEvents Label2 As Label
     Friend WithEvents Label20 As Label
     Friend WithEvents Panel1 As Panel
-    Friend WithEvents ListView1 As ListView
+    Friend WithEvents LVKodePO As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents txtKD_PR As TextBox
     Friend WithEvents KD_NPWP As TextBox
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents BtnPlus As PictureBox
     Friend WithEvents TxtKodeSupplier As TextBox
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn

@@ -5,6 +5,7 @@ Public Class PengambilanBarang
     Dim aindex As Integer = -1
     Public statusP As String
     Public angkakirim As Integer = 0
+
     Private Sub PengambilanBarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Koneksi()
         Panel1.Hide()

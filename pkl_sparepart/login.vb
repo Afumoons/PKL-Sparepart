@@ -95,7 +95,7 @@ Public Class login
         End Try
     End Sub
 
-    Private Sub login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+    Private Sub Login_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         Koneksi()
     End Sub
 

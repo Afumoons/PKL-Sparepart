@@ -9,14 +9,14 @@ Public Class TerimaRV
         CrystalReportViewer1.ReportSource = REPORT1
         CrystalReportViewer1.RefreshReport()
     End Sub
-
-    'Private Sub TerimaRV_Load(sender As Object, e As EventArgs) Handles Me.Load
-    '    Dim rpt As New ReportDocument
-    '    rpt.Load("CR_Terima.rpt")
-    '    rpt.SetDatabaseLogon("pkl", "pkl")
-    '    CrystalReportViewer1.SelectionFormula = "{tblproduksi.Tgl_Pesanan} >= '" & DateTimePicker1.Text & "' and {tblproduksi.Tgl_Pesanan} <= '" & DateTimePicker2.Text & "' and {tblproduksi.Nama_Customer} like '" & TextBox3.Text & "'"
-    '    'CrystalReportViewer1.SelectionFormula = "{tblproduksi.Tgl_Pesanan} >= '" & TextBox1.Text & "' and {tblproduksi.Tgl_Pesanan} <= '" & TextBox2.Text & "' and {tblproduksi.Nama_Customer} like '" & TextBox3.Text & "' "
-    '    CrystalReportViewer1.ReportSource = rpt
-    '    CrystalReportViewer1.RefreshReport()
-    'End Sub
 End Class
+
+'Private Sub TerimaRV_Load(sender As Object, e As EventArgs) Handles Me.Load
+'    Dim rpt As New ReportDocument
+'    rpt.Load("CR_Terima.rpt")
+'    rpt.SetDatabaseLogon("pkl", "pkl")
+'    CrystalReportViewer1.SelectionFormula = "{tblproduksi.Tgl_Pesanan} >= '" & DateTimePicker1.Text & "' and {tblproduksi.Tgl_Pesanan} <= '" & DateTimePicker2.Text & "' and {tblproduksi.Nama_Customer} like '" & TextBox3.Text & "'"
+'    'CrystalReportViewer1.SelectionFormula = "{tblproduksi.Tgl_Pesanan} >= '" & TextBox1.Text & "' and {tblproduksi.Tgl_Pesanan} <= '" & TextBox2.Text & "' and {tblproduksi.Nama_Customer} like '" & TextBox3.Text & "' "
+'    CrystalReportViewer1.ReportSource = rpt
+'    CrystalReportViewer1.RefreshReport()
+'End Sub
