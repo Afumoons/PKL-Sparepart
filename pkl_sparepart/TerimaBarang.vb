@@ -26,13 +26,13 @@ Public Class TerimaBarang
                         cmd = New OracleCommand("update t_po set status_PO = 'Terima' where kode_transaksiPO = '" & TxtKodePO.Text & "'", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                         cmd.ExecuteNonQuery()
-                        cmd.Dispose()
+                        CloseConn("cmd")
                     End If
 #Disable Warning BC40000 ' Type or member is obsolete
                     cmd = New OracleCommand("insert into Penerimaan values ('" & DataGridView1.Rows(index).Cells(6).Value & "','" & txtKD_PR.Text & "','" & TxtKodePO.Text & "','" & TxtKodeSupplier.Text & "','" & txtkode.Text & "','" & DateTimePicker1.Value & "','" & TxtDNVendor.Text & "','" & TxtNoPol.Text & "','" & DataGridView1.Rows(index).Cells(0).Value & "','" & DataGridView1.Rows(index).Cells(2).Value & "','" & DataGridView1.Rows(index).Cells(4).Value & "','" & DataGridView1.Rows(index).Cells(5).Value & "')", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                     cmd.ExecuteNonQuery()
-                    cmd.Dispose()
+                    CloseConn("cmd")
                 Catch ex As Exception
                 End Try
                 For p = 1 To CInt(DataGridView1.Rows(index).Cells(2).Value)
@@ -49,8 +49,7 @@ Public Class TerimaBarang
                                 bantT += "0"
                             Next
                         End If
-                        dr.Close()
-                        cmd.Dispose()
+                        CloseConn("all")
                         kdSP = DataGridView1.Rows(index).Cells(6).Value & bantT & kdSP
                     Catch ex As Exception
                     End Try
@@ -62,7 +61,7 @@ Public Class TerimaBarang
                         cmd = New OracleCommand(sql, conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                         cmd.ExecuteNonQuery()
-                        cmd.Dispose()
+                        CloseConn("cmd")
                     Catch ex As Exception
                     End Try
                 Next
@@ -96,7 +95,7 @@ Public Class TerimaBarang
                 cmd = New OracleCommand("update t_pr set qty1 = '" & anu1 & "', qty2 = '" & anuu & "' where kode_transaksipr = '" & kodepr & "' ", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                 cmd.ExecuteNonQuery()
-                cmd.Dispose()
+                CloseConn("cmd")
             End If
             baris += 1
         End While
@@ -107,7 +106,7 @@ Public Class TerimaBarang
     Private Sub TerimaBarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         kuantiti = New Integer() {kuantiti1, kuantiti2, kuantiti3, kuantiti4, kuantiti5, kuantiti6, kuantiti7, kuantiti8, kuantiti9, kuantiti10}
         produk = New String() {produk1, produk2, produk3, produk4, produk5, produk6, produk7, produk8, produk9, produk10}
-        koneksi()
+        Koneksi()
         Dim month As String = Format(DateTimePicker1.Value, "MM")
         Dim year As String = Format(DateTimePicker1.Value, "yy")
         Dim gabungan As String = year + month
@@ -126,8 +125,7 @@ Public Class TerimaBarang
                     bant += "0"
                 Next
             End If
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
             txtkode.Text = "BPSP-" & gabungan & bant & txtkode.Text
         Catch ex As Exception
             MessageBox.Show(ex.Message, "bacot")
@@ -149,8 +147,7 @@ Public Class TerimaBarang
         Catch ex As Exception
 
         End Try
-        dr.Close()
-        cmd.Dispose()
+        CloseConn("all")
     End Sub
     Private Sub ListView1_SelectedIndexChanged(sender As Object, e As EventArgs) Handles ListView1.SelectedIndexChanged
         If (ListView1.SelectedItems.Count > 0) Then
@@ -167,8 +164,7 @@ Public Class TerimaBarang
         TxtNamaSupp.Text = dr.Item(1)
         TxtAlamatSupp.Text = dr.Item(2)
         TxtKodeSupplier.Text = dr.Item(3)
-        dr.Close()
-        cmd.Dispose()
+        CloseConn("all")
 #Disable Warning BC40000 ' Type or member is obsolete
         cmd = New OracleCommand("select distinct s.UOM,s.UOM_PACKAGING,r.qty1,r.qty2,s.nama_kategori,s.kode_kategori from KATEGORI_sparepart s join t_pr r on (s.kode_kategori = r.kode_kategori) join t_po o on(r.kode_transaksipr=o.kode_transaksipr) where  o.kode_transaksiPO =  '" & TxtKodePO.Text & "'", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
@@ -186,8 +182,7 @@ Public Class TerimaBarang
             DataGridView1.Rows(baris).Cells(4).Value = "0"
             baris += 1
         End While
-        dr.Close()
-        cmd.Dispose()
+        CloseConn("all")
         TerimaBarang_Load(sender, e)
         Panel1.Hide()
     End Sub
@@ -204,8 +199,7 @@ Public Class TerimaBarang
                 ListView1.Items.Add(dr.Item(0))
             End While
         End If
-        dr.Close()
-        cmd.Dispose()
+        CloseConn("all")
     End Sub
 
     Private Sub DataGridView1_TextChanged(sender As Object, e As EventArgs) Handles DataGridView1.TextChanged
@@ -223,8 +217,7 @@ Public Class TerimaBarang
             End If
             baris += 1
         End While
-        dr.Close()
-        cmd.Dispose()
+        CloseConn("all")
     End Sub
 
     Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
@@ -245,8 +238,7 @@ Public Class TerimaBarang
                 baris += 1
             End While
         End If
-        dr.Close()
-        cmd.Dispose()
+        CloseConn("all")
     End Sub
 
     Private Sub DataGridView1_EditModeChanged(sender As Object, e As EventArgs) Handles DataGridView1.EditModeChanged
@@ -265,7 +257,6 @@ Public Class TerimaBarang
             End If
             baris += 1
         End While
-        dr.Close()
-        cmd.Dispose()
+        CloseConn("all")
     End Sub
 End Class

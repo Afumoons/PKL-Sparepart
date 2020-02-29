@@ -1,6 +1,5 @@
 ﻿Public Class SparepartRV
 
-
     Private Sub SparepartRV_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         If CheckBox1.Checked = True Then
             CRSparepartW.Show()

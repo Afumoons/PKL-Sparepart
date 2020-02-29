@@ -7,7 +7,7 @@ Module Module1
     Public cmd As New OracleCommand
 #Enable Warning BC40000 ' Type or member is obsolete
     Public dr As OracleDataReader
-    Sub koneksi()
+    Sub Koneksi()
         Try
             conn.Close()
             'conn = New OracleConnection("Data Source=orcl;User ID=pkl;Password=pkl;Unicode=True")
@@ -16,7 +16,18 @@ Module Module1
 #Enable Warning BC40000 ' Type or member is obsolete
             conn.Open()
         Catch ex As Exception
-        MessageBox.Show(ex.Message, "Tidak dapat terhubung ke Server", MessageBoxButtons.OK, MessageBoxIcon.Information)
+            MessageBox.Show(ex.Message, "Tidak dapat terhubung ke Server", MessageBoxButtons.OK, MessageBoxIcon.Information)
         End Try
+    End Sub
+
+    Public Sub CloseConn(Type As String)  'Untuk close data reader dan command
+        If Type = "dr" Then
+            dr.Close()
+        ElseIf Type = "cmd" Then
+            cmd.Dispose()
+        ElseIf Type = "all" Then
+            dr.Close()
+            cmd.Dispose()
+        End If
     End Sub
 End Module

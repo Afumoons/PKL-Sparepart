@@ -77,8 +77,8 @@ Partial Class Supplier
         Me.Label16 = New System.Windows.Forms.Label()
         Me.Label17 = New System.Windows.Forms.Label()
         Me.Label21 = New System.Windows.Forms.Label()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
+        Me.BtnBack = New System.Windows.Forms.PictureBox()
+        Me.BtnSave = New System.Windows.Forms.PictureBox()
         Me.TabControl1.SuspendLayout()
         Me.TabPage1.SuspendLayout()
         Me.TabPage2.SuspendLayout()
@@ -89,8 +89,8 @@ Partial Class Supplier
         CType(Me.PictureBox4, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DGVContact, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TabPage5.SuspendLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BtnBack, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BtnSave, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxtKode
@@ -670,27 +670,27 @@ Partial Class Supplier
         Me.Label21.TabIndex = 195
         Me.Label21.Text = "© Made by. ANSKE"
         '
-        'PictureBox2
+        'BtnBack
         '
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(749, 17)
-        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(30, 33)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 194
-        Me.PictureBox2.TabStop = False
+        Me.BtnBack.Image = CType(resources.GetObject("BtnBack.Image"), System.Drawing.Image)
+        Me.BtnBack.Location = New System.Drawing.Point(749, 17)
+        Me.BtnBack.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnBack.Name = "BtnBack"
+        Me.BtnBack.Size = New System.Drawing.Size(30, 33)
+        Me.BtnBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BtnBack.TabIndex = 194
+        Me.BtnBack.TabStop = False
         '
-        'PictureBox1
+        'BtnSave
         '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(710, 12)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(36, 43)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 193
-        Me.PictureBox1.TabStop = False
+        Me.BtnSave.Image = CType(resources.GetObject("BtnSave.Image"), System.Drawing.Image)
+        Me.BtnSave.Location = New System.Drawing.Point(710, 12)
+        Me.BtnSave.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnSave.Name = "BtnSave"
+        Me.BtnSave.Size = New System.Drawing.Size(36, 43)
+        Me.BtnSave.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BtnSave.TabIndex = 193
+        Me.BtnSave.TabStop = False
         '
         'Supplier
         '
@@ -699,8 +699,8 @@ Partial Class Supplier
         Me.BackColor = System.Drawing.Color.FromArgb(CType(CType(255, Byte), Integer), CType(CType(255, Byte), Integer), CType(CType(192, Byte), Integer))
         Me.ClientSize = New System.Drawing.Size(812, 445)
         Me.Controls.Add(Me.Label21)
-        Me.Controls.Add(Me.PictureBox2)
-        Me.Controls.Add(Me.PictureBox1)
+        Me.Controls.Add(Me.BtnBack)
+        Me.Controls.Add(Me.BtnSave)
         Me.Controls.Add(Me.Label17)
         Me.Controls.Add(Me.Label16)
         Me.Controls.Add(Me.TxtKode)
@@ -725,8 +725,8 @@ Partial Class Supplier
         CType(Me.DGVContact, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TabPage5.ResumeLayout(False)
         Me.TabPage5.PerformLayout()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BtnBack, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BtnSave, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -783,8 +783,8 @@ Partial Class Supplier
     Friend WithEvents TxtCatatan As TextBox
     Friend WithEvents Label16 As Label
     Friend WithEvents Label17 As Label
-    Friend WithEvents PictureBox1 As PictureBox
-    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents BtnSave As PictureBox
+    Friend WithEvents BtnBack As PictureBox
     Friend WithEvents Label21 As Label
     Friend WithEvents PictureBox3 As PictureBox
     Friend WithEvents PictureBox4 As PictureBox

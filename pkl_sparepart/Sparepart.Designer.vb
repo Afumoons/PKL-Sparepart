@@ -34,28 +34,28 @@ Partial Class Sparepart
         Me.Panel1 = New System.Windows.Forms.Panel()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label15 = New System.Windows.Forms.Label()
-        Me.RadioButton1 = New System.Windows.Forms.RadioButton()
-        Me.RadioButton2 = New System.Windows.Forms.RadioButton()
-        Me.CheckBox1 = New System.Windows.Forms.CheckBox()
+        Me.RbGood = New System.Windows.Forms.RadioButton()
+        Me.Rb2ndGrade = New System.Windows.Forms.RadioButton()
+        Me.CbStatus = New System.Windows.Forms.CheckBox()
         Me.TabBuatBarang = New System.Windows.Forms.TabControl()
         Me.TabInformasi = New System.Windows.Forms.TabPage()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.NumericUpDown2 = New System.Windows.Forms.NumericUpDown()
+        Me.TxtStok = New System.Windows.Forms.NumericUpDown()
         Me.Label10 = New System.Windows.Forms.Label()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TxtCatatan = New System.Windows.Forms.TextBox()
         Me.Label2 = New System.Windows.Forms.Label()
-        Me.PictureBox1 = New System.Windows.Forms.PictureBox()
-        Me.btnsimpan = New System.Windows.Forms.PictureBox()
-        Me.PictureBox2 = New System.Windows.Forms.PictureBox()
+        Me.BtnCategory = New System.Windows.Forms.PictureBox()
+        Me.BtnSimpan = New System.Windows.Forms.PictureBox()
+        Me.BtnBack = New System.Windows.Forms.PictureBox()
         Me.Panel1.SuspendLayout()
         Me.TabBuatBarang.SuspendLayout()
         Me.TabInformasi.SuspendLayout()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.btnsimpan, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.TxtStok, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BtnCategory, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BtnSimpan, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BtnBack, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'TxtKode
@@ -168,40 +168,40 @@ Partial Class Sparepart
         Me.Label15.TabIndex = 194
         Me.Label15.Text = "Item Grade"
         '
-        'RadioButton1
+        'RbGood
         '
-        Me.RadioButton1.AutoSize = True
-        Me.RadioButton1.Location = New System.Drawing.Point(110, 93)
-        Me.RadioButton1.Margin = New System.Windows.Forms.Padding(2)
-        Me.RadioButton1.Name = "RadioButton1"
-        Me.RadioButton1.Size = New System.Drawing.Size(51, 17)
-        Me.RadioButton1.TabIndex = 10
-        Me.RadioButton1.TabStop = True
-        Me.RadioButton1.Text = "Good"
-        Me.RadioButton1.UseVisualStyleBackColor = True
+        Me.RbGood.AutoSize = True
+        Me.RbGood.Location = New System.Drawing.Point(110, 93)
+        Me.RbGood.Margin = New System.Windows.Forms.Padding(2)
+        Me.RbGood.Name = "RbGood"
+        Me.RbGood.Size = New System.Drawing.Size(51, 17)
+        Me.RbGood.TabIndex = 10
+        Me.RbGood.TabStop = True
+        Me.RbGood.Text = "Good"
+        Me.RbGood.UseVisualStyleBackColor = True
         '
-        'RadioButton2
+        'Rb2ndGrade
         '
-        Me.RadioButton2.AutoSize = True
-        Me.RadioButton2.Location = New System.Drawing.Point(162, 93)
-        Me.RadioButton2.Margin = New System.Windows.Forms.Padding(2)
-        Me.RadioButton2.Name = "RadioButton2"
-        Me.RadioButton2.Size = New System.Drawing.Size(75, 17)
-        Me.RadioButton2.TabIndex = 11
-        Me.RadioButton2.TabStop = True
-        Me.RadioButton2.Text = "2nd Grade"
-        Me.RadioButton2.UseVisualStyleBackColor = True
+        Me.Rb2ndGrade.AutoSize = True
+        Me.Rb2ndGrade.Location = New System.Drawing.Point(162, 93)
+        Me.Rb2ndGrade.Margin = New System.Windows.Forms.Padding(2)
+        Me.Rb2ndGrade.Name = "Rb2ndGrade"
+        Me.Rb2ndGrade.Size = New System.Drawing.Size(75, 17)
+        Me.Rb2ndGrade.TabIndex = 11
+        Me.Rb2ndGrade.TabStop = True
+        Me.Rb2ndGrade.Text = "2nd Grade"
+        Me.Rb2ndGrade.UseVisualStyleBackColor = True
         '
-        'CheckBox1
+        'CbStatus
         '
-        Me.CheckBox1.AutoSize = True
-        Me.CheckBox1.Location = New System.Drawing.Point(110, 24)
-        Me.CheckBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.CheckBox1.Name = "CheckBox1"
-        Me.CheckBox1.Size = New System.Drawing.Size(68, 17)
-        Me.CheckBox1.TabIndex = 9
-        Me.CheckBox1.Text = "Terpakai"
-        Me.CheckBox1.UseVisualStyleBackColor = True
+        Me.CbStatus.AutoSize = True
+        Me.CbStatus.Location = New System.Drawing.Point(110, 24)
+        Me.CbStatus.Margin = New System.Windows.Forms.Padding(2)
+        Me.CbStatus.Name = "CbStatus"
+        Me.CbStatus.Size = New System.Drawing.Size(68, 17)
+        Me.CbStatus.TabIndex = 9
+        Me.CbStatus.Text = "Terpakai"
+        Me.CbStatus.UseVisualStyleBackColor = True
         '
         'TabBuatBarang
         '
@@ -215,14 +215,14 @@ Partial Class Sparepart
         'TabInformasi
         '
         Me.TabInformasi.Controls.Add(Me.Label5)
-        Me.TabInformasi.Controls.Add(Me.NumericUpDown2)
-        Me.TabInformasi.Controls.Add(Me.CheckBox1)
+        Me.TabInformasi.Controls.Add(Me.TxtStok)
+        Me.TabInformasi.Controls.Add(Me.CbStatus)
         Me.TabInformasi.Controls.Add(Me.Label10)
         Me.TabInformasi.Controls.Add(Me.Label4)
-        Me.TabInformasi.Controls.Add(Me.RadioButton2)
+        Me.TabInformasi.Controls.Add(Me.Rb2ndGrade)
         Me.TabInformasi.Controls.Add(Me.Label3)
         Me.TabInformasi.Controls.Add(Me.Label1)
-        Me.TabInformasi.Controls.Add(Me.RadioButton1)
+        Me.TabInformasi.Controls.Add(Me.RbGood)
         Me.TabInformasi.Controls.Add(Me.Label15)
         Me.TabInformasi.Location = New System.Drawing.Point(4, 22)
         Me.TabInformasi.Name = "TabInformasi"
@@ -242,13 +242,13 @@ Partial Class Sparepart
         Me.Label5.TabIndex = 197
         Me.Label5.Text = "Stok"
         '
-        'NumericUpDown2
+        'TxtStok
         '
-        Me.NumericUpDown2.Location = New System.Drawing.Point(110, 60)
-        Me.NumericUpDown2.Margin = New System.Windows.Forms.Padding(2)
-        Me.NumericUpDown2.Name = "NumericUpDown2"
-        Me.NumericUpDown2.Size = New System.Drawing.Size(92, 20)
-        Me.NumericUpDown2.TabIndex = 196
+        Me.TxtStok.Location = New System.Drawing.Point(110, 60)
+        Me.TxtStok.Margin = New System.Windows.Forms.Padding(2)
+        Me.TxtStok.Name = "TxtStok"
+        Me.TxtStok.Size = New System.Drawing.Size(92, 20)
+        Me.TxtStok.TabIndex = 196
         '
         'Label10
         '
@@ -296,38 +296,38 @@ Partial Class Sparepart
         Me.Label2.TabIndex = 200
         Me.Label2.Text = "Remark"
         '
-        'PictureBox1
+        'BtnCategory
         '
-        Me.PictureBox1.Image = CType(resources.GetObject("PictureBox1.Image"), System.Drawing.Image)
-        Me.PictureBox1.Location = New System.Drawing.Point(391, 37)
-        Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)
-        Me.PictureBox1.Name = "PictureBox1"
-        Me.PictureBox1.Size = New System.Drawing.Size(23, 27)
-        Me.PictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox1.TabIndex = 196
-        Me.PictureBox1.TabStop = False
+        Me.BtnCategory.Image = CType(resources.GetObject("BtnCategory.Image"), System.Drawing.Image)
+        Me.BtnCategory.Location = New System.Drawing.Point(391, 37)
+        Me.BtnCategory.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnCategory.Name = "BtnCategory"
+        Me.BtnCategory.Size = New System.Drawing.Size(23, 27)
+        Me.BtnCategory.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BtnCategory.TabIndex = 196
+        Me.BtnCategory.TabStop = False
         '
-        'btnsimpan
+        'BtnSimpan
         '
-        Me.btnsimpan.Image = CType(resources.GetObject("btnsimpan.Image"), System.Drawing.Image)
-        Me.btnsimpan.Location = New System.Drawing.Point(721, 11)
-        Me.btnsimpan.Margin = New System.Windows.Forms.Padding(2)
-        Me.btnsimpan.Name = "btnsimpan"
-        Me.btnsimpan.Size = New System.Drawing.Size(36, 43)
-        Me.btnsimpan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.btnsimpan.TabIndex = 192
-        Me.btnsimpan.TabStop = False
+        Me.BtnSimpan.Image = CType(resources.GetObject("BtnSimpan.Image"), System.Drawing.Image)
+        Me.BtnSimpan.Location = New System.Drawing.Point(721, 11)
+        Me.BtnSimpan.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnSimpan.Name = "BtnSimpan"
+        Me.BtnSimpan.Size = New System.Drawing.Size(36, 43)
+        Me.BtnSimpan.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BtnSimpan.TabIndex = 192
+        Me.BtnSimpan.TabStop = False
         '
-        'PictureBox2
+        'BtnBack
         '
-        Me.PictureBox2.Image = CType(resources.GetObject("PictureBox2.Image"), System.Drawing.Image)
-        Me.PictureBox2.Location = New System.Drawing.Point(759, 15)
-        Me.PictureBox2.Margin = New System.Windows.Forms.Padding(2)
-        Me.PictureBox2.Name = "PictureBox2"
-        Me.PictureBox2.Size = New System.Drawing.Size(30, 33)
-        Me.PictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
-        Me.PictureBox2.TabIndex = 164
-        Me.PictureBox2.TabStop = False
+        Me.BtnBack.Image = CType(resources.GetObject("BtnBack.Image"), System.Drawing.Image)
+        Me.BtnBack.Location = New System.Drawing.Point(759, 15)
+        Me.BtnBack.Margin = New System.Windows.Forms.Padding(2)
+        Me.BtnBack.Name = "BtnBack"
+        Me.BtnBack.Size = New System.Drawing.Size(30, 33)
+        Me.BtnBack.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.BtnBack.TabIndex = 164
+        Me.BtnBack.TabStop = False
         '
         'Sparepart
         '
@@ -337,13 +337,13 @@ Partial Class Sparepart
         Me.ClientSize = New System.Drawing.Size(812, 445)
         Me.Controls.Add(Me.Label2)
         Me.Controls.Add(Me.Panel1)
-        Me.Controls.Add(Me.PictureBox1)
-        Me.Controls.Add(Me.btnsimpan)
+        Me.Controls.Add(Me.BtnCategory)
+        Me.Controls.Add(Me.BtnSimpan)
         Me.Controls.Add(Me.TxtNama)
         Me.Controls.Add(Me.Label9)
         Me.Controls.Add(Me.Label8)
         Me.Controls.Add(Me.Label20)
-        Me.Controls.Add(Me.PictureBox2)
+        Me.Controls.Add(Me.BtnBack)
         Me.Controls.Add(Me.TabBuatBarang)
         Me.Controls.Add(Me.TxtKode)
         Me.Controls.Add(Me.TxtCatatan)
@@ -355,31 +355,31 @@ Partial Class Sparepart
         Me.TabBuatBarang.ResumeLayout(False)
         Me.TabInformasi.ResumeLayout(False)
         Me.TabInformasi.PerformLayout()
-        CType(Me.NumericUpDown2, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.btnsimpan, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.PictureBox2, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.TxtStok, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BtnCategory, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BtnSimpan, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BtnBack, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
     Friend WithEvents TxtKode As TextBox
     Friend WithEvents Label20 As Label
-    Friend WithEvents PictureBox2 As PictureBox
+    Friend WithEvents BtnBack As PictureBox
     Friend WithEvents Label8 As Label
     Friend WithEvents Label9 As Label
     Friend WithEvents TxtNama As TextBox
-    Friend WithEvents btnsimpan As PictureBox
-    Friend WithEvents PictureBox1 As PictureBox
+    Friend WithEvents BtnSimpan As PictureBox
+    Friend WithEvents BtnCategory As PictureBox
     Friend WithEvents ListView1 As ListView
     Friend WithEvents ColumnHeader1 As ColumnHeader
     Friend WithEvents ColumnHeader2 As ColumnHeader
     Friend WithEvents Panel1 As Panel
     Friend WithEvents Label1 As Label
     Friend WithEvents Label15 As Label
-    Friend WithEvents RadioButton1 As RadioButton
-    Friend WithEvents RadioButton2 As RadioButton
-    Friend WithEvents CheckBox1 As CheckBox
+    Friend WithEvents RbGood As RadioButton
+    Friend WithEvents Rb2ndGrade As RadioButton
+    Friend WithEvents CbStatus As CheckBox
     Friend WithEvents TabBuatBarang As TabControl
     Friend WithEvents TabInformasi As TabPage
     Friend WithEvents Label10 As Label
@@ -388,5 +388,5 @@ Partial Class Sparepart
     Friend WithEvents TxtCatatan As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents Label5 As Label
-    Friend WithEvents NumericUpDown2 As NumericUpDown
+    Friend WithEvents TxtStok As NumericUpDown
 End Class

@@ -1,6 +1,6 @@
 ﻿Public Class index
     Public Sub index_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        koneksi()
+        Koneksi()
         Panel10.Hide()
         Panel9.Hide()
         Panel11.Hide()
@@ -54,8 +54,7 @@
 
     Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
         Try
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
             Me.Close()
             login.Close()
         Catch ex As Exception
@@ -240,8 +239,6 @@
         Panel28.Show()
     End Sub
 
-
-
     Private Sub Panel12_MouseHover(sender As Object, e As EventArgs) Handles Panel12.MouseHover
         Panel10.Hide()
         Panel9.Hide()
@@ -305,7 +302,6 @@
         Panel31.Hide()
         Panel27.Hide()
     End Sub
-
 
     Private Sub Panel13_MouseHover(sender As Object, e As EventArgs) Handles Panel13.MouseHover
         Panel25.Hide()

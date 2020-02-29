@@ -2,7 +2,7 @@
 Public Class Supplier
 
     Private Sub Supplier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        koneksi()
+        Koneksi()
         DGVAP.AllowUserToAddRows = False
         DGVContact.AllowUserToAddRows = False
         TxtKode.Text = ""
@@ -21,8 +21,7 @@ Public Class Supplier
                     bant += "0"
                 Next
             End If
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
             TxtKode.Text = "SPL" & bant & TxtKode.Text
         Catch ex As Exception
             TxtKode.Text = "SPL" & "0001"
@@ -33,7 +32,7 @@ Public Class Supplier
         TxtNama.Text = Nothing
     End Sub
 
-    Private Sub PictureBox1_Click(sender As Object, e As EventArgs) Handles PictureBox1.Click
+    Private Sub BtnSave_Click(sender As Object, e As EventArgs) Handles BtnSave.Click
         If TxtCatatan.Text = "Catatan Tentang Supplier Untuk Internal" Then
             TxtCatatan.Text = ""
         End If
@@ -53,7 +52,7 @@ Public Class Supplier
                     Dim cmd As New OracleCommand(sql, conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                     cmd.ExecuteNonQuery()
-                    cmd.Dispose()
+                    CloseConn("cmd")
                 Catch ex As Exception
 
                 End Try
@@ -86,7 +85,7 @@ Public Class Supplier
         DGVContact.AllowUserToAddRows = True
     End Sub
 
-    Private Sub PictureBox2_Click(sender As Object, e As EventArgs) Handles PictureBox2.Click
+    Private Sub BtnBack_Click(sender As Object, e As EventArgs) Handles BtnBack.Click
         Me.Close()
     End Sub
 End Class

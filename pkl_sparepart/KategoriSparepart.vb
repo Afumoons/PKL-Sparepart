@@ -3,7 +3,7 @@ Public Class KategoriSparepart
     Public anu2, anu3, anu4 As String
 
     Private Sub KategoriSparepart_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        koneksi()
+        Koneksi()
         TxtNama.Text = "DESCRIPTION SPAREPART"
         CBItemClass.Text = Nothing
         CBSubClass.Text = Nothing
@@ -23,14 +23,11 @@ Public Class KategoriSparepart
                     bant += "0"
                 Next
             End If
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
             TxtKode.Text = "BRG" & bant & TxtKode.Text
-        Catch ex As Exception
-            'Kode Kategori masih kosong
+        Catch ex As Exception 'Kode Kategori masih kosong
             TxtKode.Text = "BRG" & "01"
         End Try
-
     End Sub
 
     Private Sub BtnSimpan_Click(sender As Object, e As EventArgs) Handles BtnSimpan.Click
@@ -39,7 +36,7 @@ Public Class KategoriSparepart
             cmd = New OracleCommand("insert into KATEGORI_SPAREPART values('" & TxtKode.Text & "','" & TxtNama.Text & "','" & CBUOM.Text & "','" & CBPackaging.Text & "','" & CBSubClass.Text & "','" & CBItemClass.Text & "','" & TxtQty.Text & "','" & TxtLeadTime.Text & "')", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
             cmd.ExecuteNonQuery()
-            cmd.Dispose()
+            CloseConn("cmd")
             Me.Close()
             Sparepart.Show()
             MessageBox.Show("Berhasil menyimpan data!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
@@ -52,7 +49,7 @@ Public Class KategoriSparepart
     End Sub
 
     Private Sub CBSubClass_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBSubClass.SelectedIndexChanged
-        Try
+        Try 'untuk memotong string
             anu2 = Format(CBSubClass.SelectedItem.ToString.Substring(0, 10))
         Catch ex As Exception
         End Try
@@ -87,7 +84,7 @@ Public Class KategoriSparepart
     End Sub
 
     Private Sub CBPackaging_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CBPackaging.SelectedIndexChanged
-        Try
+        Try 'untuk memotong string
             CBUOM.Text = anu3
             anu4 = Format(CBPackaging.SelectedItem.ToString.Substring(0, 10))
         Catch ex As Exception

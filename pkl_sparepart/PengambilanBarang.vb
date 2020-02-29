@@ -1,13 +1,12 @@
 ﻿Imports System.Data.OracleClient
 
 Public Class PengambilanBarang
-
     Dim anu, mantul, cb, cb1, cek As String
     Dim aindex As Integer = -1
     Public statusP As String
     Public angkakirim As Integer = 0
     Private Sub PengambilanBarang_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        koneksi()
+        Koneksi()
         Panel1.Hide()
         MessageBox.Show("Button + jika barang lama sudah terdata, Button EDIT jika barang lama belum terdata, Button .. jika hanya mengambil barang baru", "Panduan", MessageBoxButtons.OK, MessageBoxIcon.Information)
         Try
@@ -23,8 +22,7 @@ Public Class PengambilanBarang
                     bant += "0"
                 Next
             End If
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
             TxtCodePickUp.Text = "PUC" & bant & TxtCodePickUp.Text
         Catch ex As Exception
             TxtCodePickUp.Text = "PUC" & "001"
@@ -44,8 +42,7 @@ Public Class PengambilanBarang
                     LVPilih.Items(LVPilih.Items.Count - 1).SubItems.Add(dr.Item(0))
                 End While
             End If
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
         End If
     End Sub
 
@@ -123,8 +120,7 @@ Public Class PengambilanBarang
             CheckBox1.Checked = True
             CheckBox1.Enabled = False
             Panel1.Show()
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
             anu = "s"
         Else
             Try
@@ -144,8 +140,7 @@ Public Class PengambilanBarang
                 CheckBox1.Checked = False
                 CheckBox1.Enabled = False
                 Panel1.Show()
-                dr.Close()
-                cmd.Dispose()
+                CloseConn("all")
                 anu = "s"
             Catch ex As Exception
                 'MessageBox.Show(ex.Message, "Informasi Error")
@@ -153,7 +148,6 @@ Public Class PengambilanBarang
         End If
     End Sub
 
-    'BELON BISA
     Private Sub PengambilanBarang_KeyDown(sender As Object, e As KeyEventArgs) Handles Me.KeyDown
         If e.Control And e.KeyCode = Keys.S Then
             If anu = "s" Then
@@ -183,8 +177,7 @@ Public Class PengambilanBarang
                     dr = cmd.ExecuteReader()
                     dr.Read()
                     LVBaru.Items.Add(dr.Item(0))
-                    dr.Close()
-                    cmd.Dispose()
+                    CloseConn("all")
 #Disable Warning BC40000 ' Type or member is obsolete
                     cmd = New OracleCommand("select kode_kategori,nama_kategori from kategori_sparepart where kode_kategori = '" & LVPilih.SelectedItems(0).SubItems(0).Text & "'", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
@@ -199,8 +192,7 @@ Public Class PengambilanBarang
                     LVBaru.Items(LVBaru.Items.Count - 1).SubItems.Add(dr.Item(0))
                     LVBaru.Items(LVBaru.Items.Count - 1).SubItems.Add(dr.Item(1))
                     LVBaru.Items(LVBaru.Items.Count - 1).SubItems.Add(sqlkiriman)
-                    dr.Close()
-                    cmd.Dispose()
+                    CloseConn("all")
                     MessageBox.Show("Berhasil", "Informasi Proses", MessageBoxButtons.OK, MessageBoxIcon.Information)
                     mantul = ""
                     Panel1.Hide()
@@ -228,13 +220,13 @@ Public Class PengambilanBarang
                 cmd = New OracleCommand("insert into pengambilan values('" & LVBaru.Items(index).SubItems(0).Text & "','" & TxtCodePickUp.Text & "','" & LVBaru.Items(index).SubItems(1).Text & "','" & DateTimePicker1.Value & "','" & cb & "','" & TextBox1.Text & "')", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                 cmd.ExecuteNonQuery()
-                cmd.Dispose()
+                CloseConn("cmd")
                 Dim Sql As String = LVBaru.Items(index).SubItems(3).Text
 #Disable Warning BC40000 ' Type or member is obsolete
                 cmd = New OracleCommand(Sql, conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                 cmd.ExecuteNonQuery()
-                cmd.Dispose()
+                CloseConn("cmd")
                 MessageBox.Show("Data Tersimpan", "Informasi Proses", MessageBoxButtons.OK, MessageBoxIcon.Information)
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Informasi Error")
@@ -244,7 +236,7 @@ Public Class PengambilanBarang
                 cmd = New OracleCommand("insert into TBBaru values('" & LVBaru.Items(index).SubItems(0).Text & "','" & TxtCodePickUp.Text & "','" & LVBaru.Items(index).SubItems(0).Text & "','" & LVBaru.Items(index).SubItems(1).Text & "','" & LVBaru.Items(index).SubItems(2).Text & "')", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                 cmd.ExecuteNonQuery()
-                cmd.Dispose()
+                CloseConn("cmd")
             Catch ex As Exception
             End Try
         Next
@@ -255,7 +247,7 @@ Public Class PengambilanBarang
                 cmd = New OracleCommand(Sql, conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                 cmd.ExecuteNonQuery()
-                cmd.Dispose()
+                CloseConn("cmd")
             Catch ex As Exception
             End Try
             Try
@@ -263,7 +255,7 @@ Public Class PengambilanBarang
                 cmd = New OracleCommand("insert into TBLama values('" & LVBaru.Items(index).SubItems(0).Text & "','" & TxtCodePickUp.Text & "','" & LVLama.Items(index).SubItems(0).Text & "','" & LVLama.Items(index).SubItems(1).Text & "','" & LVLama.Items(index).SubItems(2).Text & "')", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                 cmd.ExecuteNonQuery()
-                cmd.Dispose()
+                CloseConn("cmd")
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Informasi Error")
             End Try
@@ -290,6 +282,7 @@ Public Class PengambilanBarang
         If e.Control And e.KeyCode = Keys.S Then
         End If
     End Sub
+
     Private Sub PengambilanBarang_MouseHover(sender As Object, e As EventArgs) Handles Me.MouseHover
         Panel2.Hide()
     End Sub

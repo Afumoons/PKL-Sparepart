@@ -4,13 +4,15 @@ Public Class TransaksiPO
     Dim SubTotal, TotalSeluruh, DPP, PPN, DiscountAngka, Bantu As Long
     Dim BarisDGV1, BarisDGV2 As Integer
     Dim DiscountPersen, Keterangan, KodeS, NPWP, EmailKontak, DescAP, TaxScheme, Status As String
+
     Private Sub TxtDiscountP_TextChanged(sender As Object, e As EventArgs) Handles TxtDiscountP.TextChanged
         DiscountPersen = TxtDiscountP.Text
-        hitung()
+        Hitung()
     End Sub
+
     Private Sub TransaksiPO_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        koneksi()
-        isikode()
+        Koneksi()
+        Isikode()
         Status = "Kode"
         Try
 #Disable Warning BC40000 ' Type or member is obsolete
@@ -20,8 +22,7 @@ Public Class TransaksiPO
             While dr.Read
                 ComboSupplier.Items.Add(dr.Item(0))
             End While
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Informasi")
         End Try
@@ -32,14 +33,14 @@ Public Class TransaksiPO
     End Sub
 
     Private Sub DateTimePicker1_ValueChanged(sender As Object, e As EventArgs) Handles DateTimePicker1.ValueChanged
-        isikode()
+        Isikode()
     End Sub
 
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         PORV.Show()
     End Sub
 
-    Sub isikode()
+    Sub Isikode() 'Isi kode transaksi PO
         Dim month As String = Format(DateTimePicker1.Value, "MM")
         Dim year As String = Format(DateTimePicker1.Value, "yy")
         Dim gabungan As String = year + month
@@ -52,21 +53,19 @@ Public Class TransaksiPO
             dr = cmd.ExecuteReader()
             If dr.HasRows Then
                 dr.Read()
-                'kode = dr.Item(0)
                 TxtKode.Text = dr.Item(0)
                 For i As Integer = 1 To 4 - TxtKode.TextLength
                     bant += "0"
                 Next
             End If
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
             TxtKode.Text = "PO-" & gabungan & "/" & "KLP" & bant & TxtKode.Text
         Catch ex As Exception
             TxtKode.Text = "PO-" & gabungan & "/" & "KLP" & "0001"
         End Try
     End Sub
 
-    Sub hitungdiskon()
+    Sub Hitungdiskon()
         Try
             DiscountAngka = SubTotal * CLng(DiscountPersen) / 100
             TxtDiscountA.Text = DiscountAngka
@@ -74,7 +73,7 @@ Public Class TransaksiPO
         End Try
     End Sub
 
-    Sub hitungsub()
+    Sub Hitungsub()
         Try
             If DataGridView1.Rows(0).Cells(7).Value IsNot Nothing Then
                 Bantu = 0
@@ -82,17 +81,16 @@ Public Class TransaksiPO
                     Bantu += DataGridView1.Rows(index).Cells(7).Value
                     TxtSubTotal.Text = Bantu
                 Next
-                hitung()
+                Hitung()
             End If
         Catch ex As Exception
-
         End Try
-
     End Sub
-    Sub hitung()
+
+    Sub Hitung()
         SubTotal = Bantu
         If ComboVAT.Text = "E" Then
-            hitungdiskon()
+            Hitungdiskon()
             DPP = SubTotal - DiscountAngka
             PPN = DPP / 10
             TotalSeluruh = DPP + PPN
@@ -100,12 +98,12 @@ Public Class TransaksiPO
         ElseIf ComboVAT.Text = "I" Then
             PPN = SubTotal / 10
             SubTotal += PPN
-            hitungdiskon()
+            Hitungdiskon()
             DPP = SubTotal - PPN - DiscountAngka
             TotalSeluruh = DPP + PPN
             TaxScheme = "Internal"
         ElseIf ComboVAT.Enabled = False Then
-            hitungdiskon()
+            Hitungdiskon()
             DPP = SubTotal - DiscountAngka
             PPN = 0
             TotalSeluruh = DPP + PPN
@@ -116,27 +114,23 @@ Public Class TransaksiPO
         TxtPPN.Text = PPN
         TxtTotal.Text = TotalSeluruh
     End Sub
+
     Private Sub BtnSimpan_Click(sender As Object, e As EventArgs) Handles BtnSimpan.Click
         Try
             Dim sql As String
             For baris = 0 To BarisDGV1 - 1
-                sql = "Insert Into T_PO values ('" & DataGridView1.Rows(baris).Cells(9).Value & "','" & DataGridView1.Rows(baris).Cells(0).Value & "','" & TxtKode.Text & "',            
-            '" & KodeS & "','" & NPWP & "','" & EmailKontak & "',
-            '" & DescAP & "','" & DateTimePicker1.Value & "','" & ComboEntity.Text & "'
-            ,'" & ComboPOType.Text & "','" & TxtUp.Text & "','" & ComboTerm.Text & "'
-            ,'" & ComboCurrency.Text & "','" & TaxScheme & "','" & PPN & "','" & DataGridView1.Rows(baris).Cells(7).Value & "'
-            ,'" & TotalSeluruh & "','" & DiscountAngka & "','" & ComboShipping.Text & "','" & TxtCatatan.Text & "','Belum Diterima')"
+                sql = "Insert Into T_PO values ('" & DataGridView1.Rows(baris).Cells(9).Value & "','" & DataGridView1.Rows(baris).Cells(0).Value & "','" & TxtKode.Text & "','" & KodeS & "','" & NPWP & "','" & EmailKontak & "','" & DescAP & "','" & DateTimePicker1.Value & "','" & ComboEntity.Text & "','" & ComboPOType.Text & "','" & TxtUp.Text & "','" & ComboTerm.Text & "','" & ComboCurrency.Text & "','" & TaxScheme & "','" & PPN & "','" & DataGridView1.Rows(baris).Cells(7).Value & "','" & TotalSeluruh & "','" & DiscountAngka & "','" & ComboShipping.Text & "','" & TxtCatatan.Text & "','Belum Diterima')"
 #Disable Warning BC40000 ' Type or member is obsolete
                 Dim cmd As New OracleCommand(sql, conn)
 #Enable Warning BC40000 ' Type or member is obsolete
                 cmd.ExecuteNonQuery()
-                cmd.Dispose()
+                CloseConn("cmd")
             Next
 #Disable Warning BC40000 ' Type or member is obsolete
             cmd = New OracleCommand("update T_pr set status_PR = 'Proses' where kode_transaksipr = '" & DataGridView1.Rows(0).Cells(0).Value & "'", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
             cmd.ExecuteNonQuery()
-            cmd.Dispose()
+            CloseConn("cmd")
             MessageBox.Show("Berhasil menyimpan data!", "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
             PORV.TxtKode.Text = TxtKode.Text
             PORV.TxtST.Text = TxtSubTotal.Text
@@ -158,13 +152,14 @@ Public Class TransaksiPO
         If ComboTax.Text = "NO - PPN" Then
             ComboVAT.Text = Nothing
             ComboVAT.Enabled = False
-            hitungsub()
+            Hitungsub()
         ElseIf ComboTax.Text = "PPN" Then
             ComboVAT.Enabled = True
             ComboVAT.Text = "E"
         End If
     End Sub
-    Sub dgvautofill()
+
+    Sub Dgvautofill()
         If Status = "Kode" Then
             Try
                 BarisDGV1 = 0
@@ -186,8 +181,7 @@ Public Class TransaksiPO
                         DataGridView1.Rows(BarisDGV1).Cells(9).Value = dr.Item(7)
                         BarisDGV1 += 1
                     End While
-                    dr.Close()
-                    cmd.Dispose()
+                    CloseConn("all")
                     Status = "Hitung"
                 End If
             Catch ex As Exception
@@ -199,7 +193,7 @@ Public Class TransaksiPO
                 For BarisDGV2 = 0 To BarisDGV1 - 1
                     DataGridView1.Rows(BarisDGV2).Cells(7).Value = DataGridView1.Rows(BarisDGV2).Cells(4).Value * DataGridView1.Rows(BarisDGV2).Cells(6).Value
                 Next
-                hitungsub()
+                Hitungsub()
             Catch ex As Exception
                 MessageBox.Show(ex.Message, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
             End Try
@@ -208,7 +202,7 @@ Public Class TransaksiPO
 
     Private Sub DataGridView1_KeyDown(sender As Object, e As KeyEventArgs) Handles DataGridView1.KeyDown
         If e.KeyCode = Keys.Tab Then
-            dgvautofill()
+            Dgvautofill()
         End If
     End Sub
 
@@ -219,13 +213,13 @@ Public Class TransaksiPO
             autoText.AutoCompleteMode = AutoCompleteMode.Suggest
             autoText.AutoCompleteSource = AutoCompleteSource.CustomSource
             Dim DataCollection As New AutoCompleteStringCollection()
-            addItems(DataCollection)
+            AddItems(DataCollection)
             autoText.AutoCompleteCustomSource = DataCollection
         End If
         'End If
     End Sub
 
-    Public Sub addItems(ByVal col As AutoCompleteStringCollection)
+    Public Sub AddItems(ByVal col As AutoCompleteStringCollection) 'Untuk autocomplete
 #Disable Warning BC40000 ' Type or member is obsolete
         cmd = New OracleCommand("select distinct kode_transaksipr from t_pr where status_pr = 'Belum Diproses'", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
@@ -233,8 +227,7 @@ Public Class TransaksiPO
         While dr.Read()
             col.Add(dr.Item(0))
         End While
-        dr.Close()
-        cmd.Dispose()
+        CloseConn("all")
     End Sub
 
     Private Sub ComboSupplier_TextChanged(sender As Object, e As EventArgs) Handles ComboSupplier.TextChanged
@@ -252,14 +245,13 @@ Public Class TransaksiPO
                 EmailKontak = dr.Item(4)
                 DescAP = dr.Item(5)
             End If
-            dr.Close()
-            cmd.Dispose()
+            CloseConn("all")
         Catch ex As Exception
         End Try
     End Sub
 
     Private Sub ComboVAT_TextChanged(sender As Object, e As EventArgs) Handles ComboVAT.TextChanged
-        hitung()
+        Hitung()
     End Sub
 End Class
 
