@@ -45,7 +45,7 @@ Public Class CR_Pengambilan
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "pkl_sparepart.CR_Pengambilan.rpt"
+            Return "SIANSKE.CR_Pengambilan.rpt"
         End Get
         Set
             'Do nothing

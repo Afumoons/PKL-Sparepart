@@ -24,7 +24,7 @@ Partial Class PRRV
     Private Sub InitializeComponent()
         Me.TxtKode = New System.Windows.Forms.TextBox()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.CR_PR1 = New pkl_sparepart.CR_PR()
+        Me.CR_PR1 = New SIANSKE.CR_PR()
         Me.SuspendLayout()
         '
         'TxtKode

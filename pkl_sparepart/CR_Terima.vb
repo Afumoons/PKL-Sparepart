@@ -45,7 +45,7 @@ Public Class CR_Terima
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "pkl_sparepart.CR_Terima.rpt"
+            Return "SIANSKE.CR_Terima.rpt"
         End Get
         Set
             'Do nothing

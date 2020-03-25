@@ -45,7 +45,7 @@ Public Class CR_FSparepart
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "pkl_sparepart.CR_FSparepart.rpt"
+            Return "SIANSKE.CR_FSparepart.rpt"
         End Get
         Set
             'Do nothing

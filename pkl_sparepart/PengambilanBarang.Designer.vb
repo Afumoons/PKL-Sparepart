@@ -320,7 +320,7 @@ Partial Class PengambilanBarang
         '
         'BtnEdit
         '
-        Me.BtnEdit.Image = Global.pkl_sparepart.My.Resources.Resources.icons8_edit_30__2_
+        Me.BtnEdit.Image = Global.SIANSKE.My.Resources.Resources.icons8_edit_30__2_
         Me.BtnEdit.Location = New System.Drawing.Point(406, 41)
         Me.BtnEdit.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnEdit.Name = "BtnEdit"

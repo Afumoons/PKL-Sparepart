@@ -45,7 +45,7 @@ Public Class CR_PO
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "pkl_sparepart.CR_PO.rpt"
+            Return "SIANSKE.CR_PO.rpt"
         End Get
         Set
             'Do nothing

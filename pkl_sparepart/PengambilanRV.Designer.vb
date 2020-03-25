@@ -23,7 +23,7 @@ Partial Class PengambilanRV
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.TxtKode = New System.Windows.Forms.TextBox()
-        Me.CR_Pengambilan1 = New pkl_sparepart.CR_Pengambilan()
+        Me.CR_Pengambilan1 = New SIANSKE.CR_Pengambilan()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
         Me.SuspendLayout()
         '
