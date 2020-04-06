@@ -84,8 +84,7 @@ Public Class TransaksiPR
 #Enable Warning BC40000 ' Type or member is obsolete
         dr = cmd.ExecuteReader()
         While dr.Read()
-            col.Add(dr.Item(0))
-            col.Add(dr.Item(1))
+            col.Add(dr.Item(0) + " " + dr.Item(1))
         End While
         CloseConn("all")
     End Sub
@@ -106,23 +105,29 @@ Public Class TransaksiPR
 
     Private Sub Isidgvcol()
 #Disable Warning BC40000 ' Type or member is obsolete
-        cmd = New OracleCommand("select * from kategori_sparepart where kode_kategori = '" & DataGridView1.Rows(barisdgv).Cells(0).Value & "' or nama_kategori = '" & DataGridView1.Rows(barisdgv).Cells(0).Value & "'", conn)
+        cmd = New OracleCommand("select * from kategori_sparepart where kode_kategori = SUBSTR('" & DataGridView1.Rows(barisdgv).Cells(0).Value & "',1,5)", conn)
 #Enable Warning BC40000 ' Type or member is obsolete
         dr = cmd.ExecuteReader()
         dr.Read()
         Try
             If DataGridView1.AllowUserToAddRows = True Then
                 If DataGridView1.Rows(barisdgv).Cells(0).Value IsNot Nothing And DataGridView1.Rows(barisdgv).Cells(2).Value Is Nothing Then
+                    'Isi data di kolom
                     DataGridView1.Rows(barisdgv).Cells(0).Value = dr.Item(0)
                     DataGridView1.Rows(barisdgv).Cells(1).Value = dr.Item(1)
                     DataGridView1.Rows(barisdgv).Cells(3).Value = dr.Item(2)
                     DataGridView1.Rows(barisdgv).Cells(5).Value = dr.Item(3)
-                    hidden.Text = dr.Item(6)
-                ElseIf DataGridView1.Rows(barisdgv).Cells(2).Value IsNot Nothing Then
-                    bantu = CInt(DataGridView1.Rows(barisdgv).Cells(2).Value) * CInt(hidden.Text)
-                    DataGridView1.Rows(barisdgv).Cells(4).Value = bantu
+                    DataGridView1.Rows(barisdgv).Cells(7).Value = dr.Item(6)
                     barisdgv += 1
                 End If
+                Try 'Penghitung qty
+                    For penghitung = 0 To barisdgv - 1
+                        bantu = CInt(DataGridView1.Rows(penghitung).Cells(2).Value) * CInt(DataGridView1.Rows(penghitung).Cells(7).Value)
+                        DataGridView1.Rows(penghitung).Cells(4).Value = bantu
+                    Next
+                Catch ex As Exception
+                    MessageBox.Show(ex.Message, "Informasi", MessageBoxButtons.OK, MessageBoxIcon.Information)
+                End Try
             End If
         Catch ex As Exception
             MessageBox.Show(ex.Message, "Produk tidak ditemukan", MessageBoxButtons.OK, MessageBoxIcon.Information)

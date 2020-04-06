@@ -32,13 +32,6 @@ Partial Class TransaksiPR
         Me.Label6 = New System.Windows.Forms.Label()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.DataGridView1 = New System.Windows.Forms.DataGridView()
-        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TxtCatatan = New System.Windows.Forms.TextBox()
         Me.Label20 = New System.Windows.Forms.Label()
@@ -52,6 +45,14 @@ Partial Class TransaksiPR
         Me.BtnAdd = New System.Windows.Forms.PictureBox()
         Me.BtnSimpan = New System.Windows.Forms.PictureBox()
         Me.BtnBack = New System.Windows.Forms.PictureBox()
+        Me.Column1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Column8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DataGridView1, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnAdd, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BtnSimpan, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -146,54 +147,13 @@ Partial Class TransaksiPR
         Me.DataGridView1.AllowUserToAddRows = False
         Me.DataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonFace
         Me.DataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7})
+        Me.DataGridView1.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.Column1, Me.Column2, Me.Column3, Me.Column4, Me.Column5, Me.Column6, Me.Column7, Me.Column8})
         Me.DataGridView1.Location = New System.Drawing.Point(9, 136)
         Me.DataGridView1.Margin = New System.Windows.Forms.Padding(2)
         Me.DataGridView1.Name = "DataGridView1"
         Me.DataGridView1.RowTemplate.Height = 24
         Me.DataGridView1.Size = New System.Drawing.Size(794, 178)
         Me.DataGridView1.TabIndex = 217
-        '
-        'Column1
-        '
-        Me.Column1.HeaderText = "Item Code"
-        Me.Column1.Name = "Column1"
-        Me.Column1.Width = 150
-        '
-        'Column2
-        '
-        Me.Column2.HeaderText = "Item Description"
-        Me.Column2.Name = "Column2"
-        Me.Column2.ReadOnly = True
-        Me.Column2.Width = 300
-        '
-        'Column3
-        '
-        Me.Column3.HeaderText = "PR Qty-1"
-        Me.Column3.Name = "Column3"
-        '
-        'Column4
-        '
-        Me.Column4.HeaderText = "UOM"
-        Me.Column4.Name = "Column4"
-        Me.Column4.ReadOnly = True
-        '
-        'Column5
-        '
-        Me.Column5.HeaderText = "PR Qty-2"
-        Me.Column5.Name = "Column5"
-        '
-        'Column6
-        '
-        Me.Column6.HeaderText = "UOM"
-        Me.Column6.Name = "Column6"
-        Me.Column6.ReadOnly = True
-        '
-        'Column7
-        '
-        Me.Column7.HeaderText = "Description"
-        Me.Column7.Name = "Column7"
-        Me.Column7.Width = 300
         '
         'Label1
         '
@@ -328,6 +288,53 @@ Partial Class TransaksiPR
         Me.BtnBack.TabIndex = 218
         Me.BtnBack.TabStop = False
         '
+        'Column1
+        '
+        Me.Column1.HeaderText = "Item Code"
+        Me.Column1.Name = "Column1"
+        Me.Column1.Width = 150
+        '
+        'Column2
+        '
+        Me.Column2.HeaderText = "Item Description"
+        Me.Column2.Name = "Column2"
+        Me.Column2.ReadOnly = True
+        Me.Column2.Width = 300
+        '
+        'Column3
+        '
+        Me.Column3.HeaderText = "PR Qty-1"
+        Me.Column3.Name = "Column3"
+        '
+        'Column4
+        '
+        Me.Column4.HeaderText = "UOM"
+        Me.Column4.Name = "Column4"
+        Me.Column4.ReadOnly = True
+        '
+        'Column5
+        '
+        Me.Column5.HeaderText = "PR Qty-2"
+        Me.Column5.Name = "Column5"
+        '
+        'Column6
+        '
+        Me.Column6.HeaderText = "UOM"
+        Me.Column6.Name = "Column6"
+        Me.Column6.ReadOnly = True
+        '
+        'Column7
+        '
+        Me.Column7.HeaderText = "Description"
+        Me.Column7.Name = "Column7"
+        Me.Column7.Width = 300
+        '
+        'Column8
+        '
+        Me.Column8.HeaderText = "Jumlah Per Qty"
+        Me.Column8.Name = "Column8"
+        Me.Column8.Visible = False
+        '
         'TransaksiPR
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -390,6 +397,8 @@ Partial Class TransaksiPR
     Friend WithEvents Label2 As Label
     Friend WithEvents DateTimePicker1 As DateTimePicker
     Friend WithEvents TxtDatePicker As TextBox
+    Friend WithEvents hidden As TextBox
+    Friend WithEvents BtnPrint As Button
     Friend WithEvents Column1 As DataGridViewTextBoxColumn
     Friend WithEvents Column2 As DataGridViewTextBoxColumn
     Friend WithEvents Column3 As DataGridViewTextBoxColumn
@@ -397,6 +406,5 @@ Partial Class TransaksiPR
     Friend WithEvents Column5 As DataGridViewTextBoxColumn
     Friend WithEvents Column6 As DataGridViewTextBoxColumn
     Friend WithEvents Column7 As DataGridViewTextBoxColumn
-    Friend WithEvents hidden As TextBox
-    Friend WithEvents BtnPrint As Button
+    Friend WithEvents Column8 As DataGridViewTextBoxColumn
 End Class
