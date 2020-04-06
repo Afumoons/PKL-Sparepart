@@ -217,7 +217,6 @@ Public Class TransaksiPO
             AddItems(DataCollection)
             autoText.AutoCompleteCustomSource = DataCollection
         End If
-        'End If
     End Sub
 
     Public Sub AddItems(ByVal col As AutoCompleteStringCollection) 'Untuk autocomplete
