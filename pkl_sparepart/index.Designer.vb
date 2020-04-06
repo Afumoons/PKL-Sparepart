@@ -658,7 +658,7 @@ Partial Class index
         'Panel1
         '
         Me.Panel1.BackColor = System.Drawing.Color.Transparent
-        Me.Panel1.BackgroundImage = Global.pkl_sparepart.My.Resources.Resources.PT__indoceria
+        Me.Panel1.BackgroundImage = Global.SIANSKE.My.Resources.Resources.PT__indoceria
         Me.Panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Panel1.Controls.Add(Me.PictureBox1)
         Me.Panel1.Controls.Add(Me.Panel12)
@@ -670,7 +670,7 @@ Partial Class index
         '
         'PictureBox1
         '
-        Me.PictureBox1.BackgroundImage = Global.pkl_sparepart.My.Resources.Resources.icons8_hibernate_64
+        Me.PictureBox1.BackgroundImage = Global.SIANSKE.My.Resources.Resources.icons8_hibernate_64
         Me.PictureBox1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.PictureBox1.Location = New System.Drawing.Point(828, 10)
         Me.PictureBox1.Margin = New System.Windows.Forms.Padding(2)

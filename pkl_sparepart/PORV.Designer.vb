@@ -28,8 +28,8 @@ Partial Class PORV
         Me.TxtPPN = New System.Windows.Forms.TextBox()
         Me.TxtDPP = New System.Windows.Forms.TextBox()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.CR_PO2 = New pkl_sparepart.CR_PO()
-        Me.CR_PO1 = New pkl_sparepart.CR_PO()
+        Me.CR_PO2 = New SIANSKE.CR_PO()
+        Me.CR_PO1 = New SIANSKE.CR_PO()
         Me.TxtCur = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '

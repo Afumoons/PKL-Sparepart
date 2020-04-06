@@ -320,7 +320,7 @@ Partial Class PengambilanBarang
         '
         'BtnEdit
         '
-        Me.BtnEdit.Image = Global.pkl_sparepart.My.Resources.Resources.icons8_edit_30__2_
+        Me.BtnEdit.Image = Global.SIANSKE.My.Resources.Resources.icons8_edit_30__2_
         Me.BtnEdit.Location = New System.Drawing.Point(406, 41)
         Me.BtnEdit.Margin = New System.Windows.Forms.Padding(2)
         Me.BtnEdit.Name = "BtnEdit"
@@ -367,18 +367,18 @@ Partial Class PengambilanBarang
         Me.Label3.AutoSize = True
         Me.Label3.Location = New System.Drawing.Point(549, 54)
         Me.Label3.Name = "Label3"
-        Me.Label3.Size = New System.Drawing.Size(102, 13)
+        Me.Label3.Size = New System.Drawing.Size(98, 13)
         Me.Label3.TabIndex = 336
-        Me.Label3.Text = "Daftar Barang Lama"
+        Me.Label3.Text = "Daftar Barang Baru"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
         Me.Label6.Location = New System.Drawing.Point(546, 227)
         Me.Label6.Name = "Label6"
-        Me.Label6.Size = New System.Drawing.Size(98, 13)
+        Me.Label6.Size = New System.Drawing.Size(102, 13)
         Me.Label6.TabIndex = 337
-        Me.Label6.Text = "Daftar Barang Baru"
+        Me.Label6.Text = "Daftar Barang Lama"
         '
         'PengambilanBarang
         '

@@ -4,7 +4,7 @@
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
         <Connections>
-          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (MySettings)" PropertyReference="ApplicationSettings.pkl_sparepart.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.OracleClient" />
+          <Connection AppSettingsObjectName="MySettings" AppSettingsPropertyName="ConnectionString" ConnectionStringObject="" IsAppSettingsProperty="true" Modifier="Assembly" Name="ConnectionString (MySettings)" PropertyReference="ApplicationSettings.SIANSKE.My.MySettings.GlobalReference.Default.ConnectionString" Provider="System.Data.OracleClient" />
         </Connections>
         <Tables>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="SPAREPARTTableAdapter" GeneratorDataComponentClassName="SPAREPARTTableAdapter" Name="SPAREPART" UserDataComponentName="SPAREPARTTableAdapter">
@@ -105,7 +105,7 @@
   <xs:element name="DataSet1" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DataSet1" msprop:Generator_UserDSName="DataSet1">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="SPAREPART" msprop:Generator_TableClassName="SPAREPARTDataTable" msprop:Generator_TableVarName="tableSPAREPART" msprop:Generator_TablePropName="SPAREPART" msprop:Generator_RowDeletingName="SPAREPARTRowDeleting" msprop:Generator_RowChangingName="SPAREPARTRowChanging" msprop:Generator_RowEvHandlerName="SPAREPARTRowChangeEventHandler" msprop:Generator_RowDeletedName="SPAREPARTRowDeleted" msprop:Generator_UserTableName="SPAREPART" msprop:Generator_RowChangedName="SPAREPARTRowChanged" msprop:Generator_RowEvArgName="SPAREPARTRowChangeEvent" msprop:Generator_RowClassName="SPAREPARTRow">
+        <xs:element name="SPAREPART" msprop:Generator_TableClassName="SPAREPARTDataTable" msprop:Generator_TableVarName="tableSPAREPART" msprop:Generator_RowChangedName="SPAREPARTRowChanged" msprop:Generator_TablePropName="SPAREPART" msprop:Generator_RowDeletingName="SPAREPARTRowDeleting" msprop:Generator_RowChangingName="SPAREPARTRowChanging" msprop:Generator_RowEvHandlerName="SPAREPARTRowChangeEventHandler" msprop:Generator_RowDeletedName="SPAREPARTRowDeleted" msprop:Generator_RowClassName="SPAREPARTRow" msprop:Generator_UserTableName="SPAREPART" msprop:Generator_RowEvArgName="SPAREPARTRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="KODE_SPAREPART" msprop:Generator_ColumnVarNameInTable="columnKODE_SPAREPART" msprop:Generator_ColumnPropNameInRow="KODE_SPAREPART" msprop:Generator_ColumnPropNameInTable="KODE_SPAREPARTColumn" msprop:Generator_UserColumnName="KODE_SPAREPART">

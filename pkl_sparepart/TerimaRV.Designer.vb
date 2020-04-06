@@ -23,7 +23,7 @@ Partial Class TerimaRV
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.CrystalReportViewer1 = New CrystalDecisions.Windows.Forms.CrystalReportViewer()
-        Me.CR_Terima1 = New pkl_sparepart.CR_Terima()
+        Me.CR_Terima1 = New SIANSKE.CR_Terima()
         Me.TxtKode = New System.Windows.Forms.TextBox()
         Me.SuspendLayout()
         '

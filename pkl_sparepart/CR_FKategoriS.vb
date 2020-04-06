@@ -45,7 +45,7 @@ Public Class CR_FKategoriS
     
     Public Overrides Property FullResourceName() As String
         Get
-            Return "pkl_sparepart.CR_FKategoriS.rpt"
+            Return "SIANSKE.CR_FKategoriS.rpt"
         End Get
         Set
             'Do nothing

@@ -1,3 +1,20 @@
+/*create user pkl identified by pkl;
+grant dba to pkl;*/
+
+insert into user_aplikasi
+values
+   ('op', 'operator');
+insert into user_aplikasi
+values
+   ('G', 'GA');
+insert into user_aplikasi
+values
+   ('pur', 'purchasing');
+insert into user_aplikasi
+values
+   ('_dmin', 'admin');
+
+
 /*User PKL Pass PKL*/
 create table USER_APLIKASI
 (
@@ -24,7 +41,7 @@ create table SPAREPART
 (
    KODE_SPAREPART VARCHAR2(30) not null,
    KODE_KATEGORI VARCHAR2(30),
-   STATUS_SPAREPART VARCHAR2(10),
+   STATUS_SPAREPART VARCHAR2(20),
    ITEM_GRADE VARCHAR2(20),
    REMARK_SPAREPART VARCHAR2(999),
    constraint PK_SPAREPART primary key (KODE_SPAREPART)
