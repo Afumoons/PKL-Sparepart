@@ -1,8 +1,0 @@
-Revisi
-+sub pr hanya sparepart 
-+form kategori clearnya belom
--keterangan listview di pengambilan
--akun master/admin
-+pass db report kalo bisa tidak ada
--keterangan penggunaan kurang jelas
-+pada pengambilan ditambah jika hanya ingin mengambil barang baru

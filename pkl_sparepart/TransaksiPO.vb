@@ -192,7 +192,7 @@ Public Class TransaksiPO
         ElseIf Status = "Hitung" Then
             Try
                 For BarisDGV2 = 0 To BarisDGV1 - 1
-                    DataGridView1.Rows(BarisDGV2).Cells(7).Value = DataGridView1.Rows(BarisDGV2).Cells(4).Value * DataGridView1.Rows(BarisDGV2).Cells(6).Value
+                    DataGridView1.Rows(BarisDGV2).Cells(7).Value = DataGridView1.Rows(BarisDGV2).Cells(2).Value * DataGridView1.Rows(BarisDGV2).Cells(6).Value
                 Next
                 Hitungsub()
             Catch ex As Exception
